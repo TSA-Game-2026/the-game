@@ -10,6 +10,9 @@ size = Vector2(580, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1899, 30)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(155, 21)
+
 [node name="Main" type="Node2D" unique_id=1615659742]
 script = ExtResource("1_ig7tw")
 
@@ -39,3 +42,29 @@ shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=119241672]
 position = Vector2(-3, -501)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1862714915]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=292639261]
+position = Vector2(-113, -156)
+shape = SubResource("RectangleShape2D_h2yge")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2/CollisionShape2D" unique_id=995456611]
+offset_left = -78.0
+offset_top = -11.0
+offset_right = 78.0
+offset_bottom = 11.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1159773606]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=605929050]
+position = Vector2(149, -159)
+shape = SubResource("RectangleShape2D_h2yge")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3/CollisionShape2D" unique_id=1427670367]
+offset_left = -78.0
+offset_top = -11.0
+offset_right = 78.0
+offset_bottom = 11.0
