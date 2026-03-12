@@ -1,0 +1,20 @@
+[gd_scene format=4 uid="uid://bsefipfo45wnl"]
+
+[ext_resource type="Texture2D" uid="uid://djx2mv1oydudj" path="res://assets/tilemapspace.png" id="1_qcwup"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23odi"]
+texture = ExtResource("1_qcwup")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_04yq1"]
+sources/0 = SubResource("TileSetAtlasSource_23odi")
+
+[node name="Spacearena" type="Node2D" unique_id=237975841]
+texture_filter = 5
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=921857963]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAFAAEAAAAAAAEAAAAEAAEAAAAAAAEAAAADAAEAAAAAAAEAAAACAAEAAAAAAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_04yq1")
