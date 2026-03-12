@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 const SPEED = 500
 const ACCELERATION = 2500
-const JUMP_STRENGTH = 1500
+const JUMP_STRENGTH = 1200
 
 
 func _ready() -> void:
