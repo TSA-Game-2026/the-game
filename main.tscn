@@ -1,6 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdkagh6rnpxyb"]
+[gd_scene format=3 uid="uid://cdkagh6rnpxyb"]
 
 [ext_resource type="Script" uid="uid://b5jn1w2d7m3vi" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://0lwsda1h6tbn" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cy6knb0hkiaq3" path="res://reset_box.tscn" id="3_h2yge"]
 
-[node name="Main" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(580, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(1899, 30)
+
+[node name="Main" type="Node2D" unique_id=1615659742]
 script = ExtResource("1_ig7tw")
+
+[node name="Character" parent="." unique_id=1419529368 instance=ExtResource("2_0xm2m")]
+position = Vector2(-3, -499)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1594719984]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=256504607]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=156077665]
+position = Vector2(0, 38)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1972090472]
+offset_left = -290.0
+offset_top = 28.0
+offset_right = 290.0
+offset_bottom = 48.0
+
+[node name="ResetBox" parent="." unique_id=956074767 node_paths=PackedStringArray("marker") instance=ExtResource("3_h2yge")]
+marker = NodePath("../Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResetBox" unique_id=1125957451]
+position = Vector2(12.5, 422)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=119241672]
+position = Vector2(-3, -501)
