@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://0lwsda1h6tbn"]
+
+[ext_resource type="Script" uid="uid://ddx7v1rfiwggg" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+
+[node name="Player" type="CharacterBody2D" unique_id=213372796]
+script = ExtResource("1_4flbx")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1597254225]
+shape = SubResource("CapsuleShape2D_onrkg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=312321475]
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 11.0
+offset_bottom = 16.0
+color = Color(0, 1, 1, 1)

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cy6knb0hkiaq3"]
+
+[ext_resource type="Script" uid="uid://i4gjrnv1grnk" path="res://reset_box.gd" id="1_jpdf8"]
+
+[node name="ResetBox" type="Area2D" unique_id=956074767]
+script = ExtResource("1_jpdf8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
