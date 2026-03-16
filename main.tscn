@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://b5jn1w2d7m3vi" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://0lwsda1h6tbn" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cy6knb0hkiaq3" path="res://reset_box.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://mgmog6p57yn1" path="res://enemy.tscn" id="4_1bvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(580, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(1899, 30)
+size = Vector2(1562, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(61, 1361.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(155, 21)
@@ -17,8 +21,8 @@ size = Vector2(155, 21)
 texture_filter = 5
 script = ExtResource("1_ig7tw")
 
-[node name="Character" parent="." unique_id=1419529368 instance=ExtResource("2_0xm2m")]
-position = Vector2(-3, -499)
+[node name="Player" parent="." unique_id=1419529368 instance=ExtResource("2_0xm2m")]
+position = Vector2(-147, -364)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1594719984]
 
@@ -38,8 +42,22 @@ offset_bottom = 48.0
 marker = NodePath("../Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ResetBox" unique_id=1125957451]
-position = Vector2(12.5, 422)
+position = Vector2(0, 433)
 shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="ResetBox2" parent="." unique_id=551150078 node_paths=PackedStringArray("marker") instance=ExtResource("3_h2yge")]
+marker = NodePath("../Marker2D")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ResetBox2" unique_id=331958999]
+position = Vector2(753.5, -273.25)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="ResetBox3" parent="." unique_id=1466996062 node_paths=PackedStringArray("marker") instance=ExtResource("3_h2yge")]
+marker = NodePath("../Marker2D")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ResetBox3" unique_id=391396543]
+position = Vector2(-753.5, -273.25)
+shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=119241672]
 position = Vector2(-3, -501)
@@ -73,3 +91,6 @@ offset_left = -78.0
 offset_top = -11.0
 offset_right = 78.0
 offset_bottom = 11.0
+
+[node name="Enemy" parent="." unique_id=1437868065 instance=ExtResource("4_1bvp3")]
+position = Vector2(154, -360)
