@@ -5,11 +5,16 @@ extends Node
 @export var current_state: State
 
 
-func change_state(state: State) -> void:
-	current_state._exit()
-	current_state = state
-	state._enter()
+func _ready() -> void:
+	current_state._enter()
 
 
 func _process(delta: float) -> void:
 	current_state._loop(delta)
+
+
+## Exits the current state and switches to the given state.
+func change_state(state: State) -> void:
+	current_state._exit()
+	current_state = state
+	state._enter()

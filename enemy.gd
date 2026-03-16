@@ -9,8 +9,9 @@ const JUMP_STRENGTH = 1200
 var normal_mask = 0b00000011 # dont fall through platforms
 var fall_mask   = 0b00000001 # do fall through platforms
 
+## When [code]true[/code] the enemy will fall through platforms
 var falling := false
-
+## The direction in which the enemy is moving on the horizontal plane
 var direction = 0
 
 
