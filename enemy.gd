@@ -35,3 +35,7 @@ func jump_if_grounded() -> bool:
 		return false
 	velocity.y -= JUMP_STRENGTH
 	return true
+	
+	
+func set_falling(val: bool) -> void:
+	falling = val
