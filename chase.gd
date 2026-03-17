@@ -11,16 +11,19 @@ func _enter():
 func _loop(_delta: float):
 	enemy.direction = sign(player.position.x - enemy.position.x)
 	
-	var fall_cond = func(): return player.position.y - TRACKING_MARGIN > enemy.position.y
-	if fall_cond.call():
-		wait_and_check(.5, func(): enemy.set_falling(true); wait_and_do(.1, enemy.set_falling.bind(false)), fall_cond)
-
+	fall_if_above()
 	
 	jump_if_below()
 
 
 func _exit():
 	pass
+
+
+func fall_if_above():
+	var fall_cond = func(): return player.position.y - TRACKING_MARGIN > enemy.position.y
+	if fall_cond.call():
+		wait_and_check(.5, func(): enemy.set_falling(true); wait_and_do(.1, enemy.set_falling.bind(false)), fall_cond)
 
 
 func jump_if_below():
