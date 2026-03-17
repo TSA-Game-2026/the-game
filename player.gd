@@ -6,8 +6,8 @@ const SPEED := 400.0
 const ACCELERATION := 2500.0
 const JUMP_STRENGTH := 1200.0
 
-var normal_mask = 0b00000011 # dont fall through platforms
-var fall_mask   = 0b00000001 # do fall through platforms
+var normal_mask = 0b00000011 # do fall through platforms
+var fall_mask   = 0b00000001 # dont fall through platforms
 
 
 func _ready() -> void:
