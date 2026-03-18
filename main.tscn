@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5jn1w2d7m3vi" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://0lwsda1h6tbn" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cy6knb0hkiaq3" path="res://reset_box.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://mgmog6p57yn1" path="res://enemy.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://b1vmn6ir6nun" path="res://paytenemy.tscn" id="4_1bvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(580, 20)
@@ -93,4 +93,4 @@ offset_right = 78.0
 offset_bottom = 11.0
 
 [node name="Enemy" parent="." unique_id=1437868065 instance=ExtResource("4_1bvp3")]
-position = Vector2(154, -360)
+position = Vector2(150, -358)
