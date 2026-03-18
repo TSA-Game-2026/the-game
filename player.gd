@@ -9,6 +9,8 @@ const JUMP_STRENGTH := 1200.0
 var normal_mask = 0b00000011 # dont fall through platforms
 var fall_mask   = 0b00000001 # do fall through platforms
 
+var damage_taken = 0
+
 
 func _ready() -> void:
 	pass
@@ -27,3 +29,7 @@ func _physics_process(delta: float) -> void:
 	collision_mask = normal_mask if !Input.is_action_pressed("move_down") else fall_mask
 	
 	move_and_slide()
+
+
+func damage(damage: float):
+	damage_taken += damage
