@@ -3,6 +3,9 @@ extends State
 
 const TRACKING_MARGIN = 10
 
+@export var attack_box: Area2D
+@export var hit_state: State
+
 
 func _enter():
 	pass
@@ -14,6 +17,9 @@ func _loop(_delta: float):
 	fall_if_above()
 	
 	jump_if_below()
+	
+	if player in attack_box.get_overlapping_bodies():
+		manager.change_state(hit_state)
 
 
 func _exit():
