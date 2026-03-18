@@ -1,25 +1,29 @@
 [gd_scene format=4 uid="uid://bsefipfo45wnl"]
 
-[ext_resource type="Texture2D" uid="uid://djx2mv1oydudj" path="res://assets/tilemapspace.png" id="1_qcwup"]
+[ext_resource type="Texture2D" uid="uid://5m7k3mnrpjrw" path="res://assets/Sprite-0001.png" id="1_23odi"]
+[ext_resource type="Texture2D" uid="uid://cwunfqstxfx0j" path="res://assets/Sprite-0002.png" id="2_04yq1"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23odi"]
-texture = ExtResource("1_qcwup")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7yi6"]
+texture = ExtResource("1_23odi")
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_04yq1"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_23odi")
+[sub_resource type="TileSet" id="TileSet_3rcmx"]
+sources/0 = SubResource("TileSetAtlasSource_i7yi6")
 
 [node name="Spacearena" type="Node2D" unique_id=237975841]
 texture_filter = 5
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=921857963]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAFAAEAAAAAAAEAAAAEAAEAAAAAAAEAAAADAAEAAAAAAAEAAAACAAEAAAAAAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAEAAAA=")
-tile_set = SubResource("TileSet_04yq1")
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAEAAAACAAAAAAAAAAEAAAACAAEAAAAAAAEAAAAAAAEAAAACAAEAAAADAAAAAAABAAEAAAADAAEAAAABAAEAAAD//wAAAAAAAAEAAAD//wEAAAAAAAEAAAD9/wAAAAACAAEAAAD8/wAAAAABAAEAAAD8/wEAAAABAAEAAAD9/wEAAAACAAEAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAABAAEAAAD4/wAAAAABAAEAAAD3/wAAAAAAAAEAAAD4/wEAAAAAAAEAAAD5/wEAAAABAAEAAAD6/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAEAAAAHAAEAAAACAAEAAAAHAAAAAAABAAEAAAAGAAAAAAABAAEAAAAEAAAAAAAAAAAAAAAIAAAAAAACAAEAAAAFAAAAAAAAAAAAAAAEAAIAAAACAAAAAAAFAAIAAAACAAAAAAD7/wIAAAACAAAAAAD6/wIAAAACAAAAAAD4//3/AAAAAAEAAAD5//3/AAAAAAAAAAD6//3/AAABAAEAAAD7//3/AAAAAAAAAAD8//3/AAACAAEAAAAHAP7/AAACAAEAAAAGAP7/AAAAAAAAAAAFAP7/AAABAAEAAAAEAP7/AAAAAAAAAAADAP7/AAAAAAEAAAACAPv/AAAAAAEAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAACAAEAAAA=")
+tile_set = SubResource("TileSet_3rcmx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=138946388]
+z_index = -1
+position = Vector2(-1962.9998, -1322.9999)
+scale = Vector2(3.6332033, 3.5361328)
+texture = ExtResource("2_04yq1")
