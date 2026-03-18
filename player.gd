@@ -33,3 +33,4 @@ func _physics_process(delta: float) -> void:
 
 func damage(damage: float):
 	damage_taken += damage
+	print(str(self) + " took " + str(damage) + " damage")
