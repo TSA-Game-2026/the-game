@@ -5,6 +5,7 @@ extends CharacterBody2D
 const SPEED := 400.0
 const ACCELERATION := 2500.0
 const JUMP_STRENGTH := 1200.0
+const damage_knockback_mult := 0.01
 
 var normal_mask = 0b00000011 # dont fall through platforms
 var fall_mask   = 0b00000001 # do fall through platforms
@@ -31,6 +32,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func damage(damage: float):
+func damage(damage: float, knockback: Vector2):
 	damage_taken += damage
-	print(str(self) + " took " + str(damage) + " damage")
+	velocity += knockback * (1 + damage_taken * damage_knockback_mult)
