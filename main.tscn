@@ -101,3 +101,9 @@ offset_bottom = 11.0
 
 [node name="Enemy" parent="." unique_id=1437868065 instance=ExtResource("4_1bvp3")]
 position = Vector2(150, -358)
+
+[node name="LeftMarker" type="Marker2D" parent="." unique_id=527756475]
+position = Vector2(-290, 28)
+
+[node name="RightMarker" type="Marker2D" parent="." unique_id=2021707326]
+position = Vector2(290, 28)
