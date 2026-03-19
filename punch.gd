@@ -30,7 +30,7 @@ func attack():
 	# check if player in range
 	# if player still in range:
 	if player in attack_box.get_overlapping_bodies():
-		player.velocity += knockback_strength
+		player.velocity += knockback_strength * Vector2(sign(player.position.x - enemy.position.x), 1)
 		player.damage(damage)
 	# wait stun_time seconds
 	await get_tree().create_timer(stun_time).timeout
