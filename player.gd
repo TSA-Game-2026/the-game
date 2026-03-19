@@ -35,3 +35,8 @@ func _physics_process(delta: float) -> void:
 func damage(damage: float, knockback: Vector2):
 	damage_taken += damage
 	velocity += knockback * (1 + damage_taken * damage_knockback_mult)
+
+
+func reset():
+	velocity = Vector2.ZERO
+	damage_taken = 0

@@ -5,5 +5,5 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
+	body.reset()
 	body.position = marker.position
-	body.velocity = Vector2.ZERO
