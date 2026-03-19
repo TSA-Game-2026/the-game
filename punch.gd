@@ -3,20 +3,20 @@ extends State
 @export var attack_box: Area2D
 @export var next_state: State
 
-@export var hit_delay = .3
-@export var stun_time = .5
+@export var hit_delay: float = 0.3
+@export var stun_time: float = 0.5
 @export var knockback_strength: Vector2 = Vector2.ZERO
 @export var damage: float = 5
 
 
 func _enter():
-	pass
-	attack()
+	enemy.direction = 0
+	await attack()
 	# switch back to chase
 	manager.change_state(next_state)
 
 
-func _loop(delta: float):
+func _loop(_delta: float):
 	pass
 
 
