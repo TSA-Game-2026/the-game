@@ -1,43 +1,12 @@
 class_name Player
-extends CharacterBody2D
-
-
-const SPEED := 350.0
-const GROUND_ACCELERATION := 2800.0
-const AIR_ACCELERATION := 1400.0
-const JUMP_STRENGTH := 1200.0
-const damage_knockback_mult := 0.01
-
-var normal_mask = 0b00000011 # dont fall through platforms
-var fall_mask   = 0b00000001 # do fall through platforms
-
-var damage_taken = 0
-
-
-func _ready() -> void:
-	pass
+extends Character
 
 
 func _physics_process(delta: float) -> void:
-	var direction = Input.get_axis("move_left", "move_right")
+	super(delta)
 	
-	velocity.x = move_toward(velocity.x, direction * SPEED, delta * (GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION))
+	move_direction = Input.get_axis("move_left", "move_right")
+	falling = Input.is_action_pressed("move_down")
 	
-	if !is_on_floor():
-		velocity += get_gravity()
-	elif Input.is_action_just_pressed("move_up"):
-		velocity.y -= JUMP_STRENGTH
-	
-	collision_mask = normal_mask if !Input.is_action_pressed("move_down") else fall_mask
-	
-	move_and_slide()
-
-
-func damage(damage: float, knockback: Vector2):
-	damage_taken += damage
-	velocity += knockback * (1 + damage_taken * damage_knockback_mult)
-
-
-func reset():
-	velocity = Vector2.ZERO
-	damage_taken = 0
+	if Input.is_action_pressed("move_up"):
+		jump_if_grounded()

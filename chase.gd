@@ -15,7 +15,7 @@ func _enter():
 
 
 func _loop(delta: float):
-	enemy.direction = sign(player.position.x - enemy.position.x)
+	enemy.move_direction = sign(player.position.x - enemy.position.x)
 	
 	fall_if_above()
 	

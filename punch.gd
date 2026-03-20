@@ -9,7 +9,7 @@ extends State
 
 
 func _enter():
-	enemy.direction = 0
+	enemy.move_direction = 0
 	await attack()
 	# switch back to chase
 	manager.change_state(next_state)
