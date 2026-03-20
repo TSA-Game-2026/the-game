@@ -2,8 +2,9 @@ class_name Player
 extends CharacterBody2D
 
 
-const SPEED := 400.0
-const ACCELERATION := 2500.0
+const SPEED := 350.0
+const GROUND_ACCELERATION := 2800.0
+const AIR_ACCELERATION := 1400.0
 const JUMP_STRENGTH := 1200.0
 const damage_knockback_mult := 0.01
 
@@ -20,7 +21,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
 	
-	velocity.x = move_toward(velocity.x, direction * SPEED, delta * ACCELERATION)
+	velocity.x = move_toward(velocity.x, direction * SPEED, delta * (GROUND_ACCELERATION if is_on_floor() else AIR_ACCELERATION))
 	
 	if !is_on_floor():
 		velocity += get_gravity()

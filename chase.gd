@@ -5,13 +5,16 @@ const TRACKING_MARGIN = 10
 
 @export var attack_box: Area2D
 @export var hit_state: State
+@export var attack_in_range_time: float = 0.1
+
+var attack_timer = attack_in_range_time
 
 
 func _enter():
 	pass
 
 
-func _loop(_delta: float):
+func _loop(delta: float):
 	enemy.direction = sign(player.position.x - enemy.position.x)
 	
 	fall_if_above()
@@ -19,7 +22,11 @@ func _loop(_delta: float):
 	jump_if_below()
 	
 	if player in attack_box.get_overlapping_bodies():
-		manager.change_state(hit_state)
+		attack_timer -= delta
+		if attack_timer <= 0:
+			manager.change_state(hit_state)
+	else:
+		attack_timer = attack_in_range_time
 
 
 func _exit():

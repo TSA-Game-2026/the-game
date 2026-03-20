@@ -13,6 +13,10 @@ var fall_mask   = 0b00000001 # do fall through platforms
 var falling := false
 ## The direction in which the enemy is moving on the horizontal plane
 var direction = 0
+## The last direction that the enemy moved
+var facing_direction = -1
+## How much damage the enemy has taken
+var damage_taken = 0
 
 
 func _ready() -> void:
@@ -28,6 +32,14 @@ func _physics_process(delta: float) -> void:
 	collision_mask = normal_mask if !falling else fall_mask
 	
 	move_and_slide()
+	
+	if velocity.x != 0:
+		facing_direction = sign(velocity.x)
+
+
+func reset():
+	velocity = Vector2.ZERO
+	damage_taken = 0
 
 
 func jump_if_grounded() -> bool:
