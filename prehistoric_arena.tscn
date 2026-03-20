@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dqpueb35voxr"]
 
+[ext_resource type="Script" uid="uid://h4xlue4d6u7r" path="res://arena.gd" id="1_4rfdh"]
 [ext_resource type="Texture2D" uid="uid://clg4sikxrcc3n" path="res://assets/prehPlatforms.png" id="1_fni4a"]
 [ext_resource type="Texture2D" uid="uid://gulhrngwj1cu" path="res://assets/prehBG.png" id="2_db7ft"]
 [ext_resource type="Texture2D" uid="uid://fpna8hx6xbg5" path="res://assets/Sprite-clouds.png" id="3_4rfdh"]
@@ -55,8 +56,12 @@ size = Vector2(1550, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhyfx"]
 size = Vector2(50, 1050)
 
-[node name="PrehistoricArena" type="Node2D" unique_id=237975841]
+[node name="PrehistoricArena" type="Node2D" unique_id=237975841 node_paths=PackedStringArray("spawn_marker", "left_marker", "right_marker")]
 texture_filter = 5
+script = ExtResource("1_4rfdh")
+spawn_marker = NodePath("RespawnMarker")
+left_marker = NodePath("LeftMarker")
+right_marker = NodePath("RightMarker")
 
 [node name="TileMapBase" type="TileMapLayer" parent="." unique_id=921857963]
 scale = Vector2(2, 2)
@@ -83,34 +88,30 @@ texture = ExtResource("3_4rfdh")
 position = Vector2(-3, -501)
 
 [node name="LeftMarker" type="Marker2D" parent="." unique_id=1240986397]
-position = Vector2(-290, 28)
+position = Vector2(-320, 0)
 
 [node name="RightMarker" type="Marker2D" parent="." unique_id=1670728953]
-position = Vector2(290, 28)
+position = Vector2(288, -32)
 
-[node name="ResetBox" parent="." unique_id=956074767 node_paths=PackedStringArray("marker") instance=ExtResource("4_db7ft")]
-marker = NodePath("../RespawnMarker")
+[node name="ResetBox" parent="." unique_id=956074767 instance=ExtResource("4_db7ft")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ResetBox" unique_id=1896609629]
 position = Vector2(0, 433)
 shape = SubResource("RectangleShape2D_4rfdh")
 
-[node name="ResetBox4" parent="." unique_id=87400528 node_paths=PackedStringArray("marker") instance=ExtResource("4_db7ft")]
-marker = NodePath("../RespawnMarker")
+[node name="ResetBox4" parent="." unique_id=87400528 instance=ExtResource("4_db7ft")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ResetBox4" unique_id=1559393923]
 position = Vector2(0, -667)
 shape = SubResource("RectangleShape2D_4rfdh")
 
-[node name="ResetBox2" parent="." unique_id=531109034 node_paths=PackedStringArray("marker") instance=ExtResource("4_db7ft")]
-marker = NodePath("../RespawnMarker")
+[node name="ResetBox2" parent="." unique_id=531109034 instance=ExtResource("4_db7ft")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ResetBox2" unique_id=492495299]
 position = Vector2(750, -117)
 shape = SubResource("RectangleShape2D_mhyfx")
 
-[node name="ResetBox3" parent="." unique_id=815832369 node_paths=PackedStringArray("marker") instance=ExtResource("4_db7ft")]
-marker = NodePath("../RespawnMarker")
+[node name="ResetBox3" parent="." unique_id=815832369 instance=ExtResource("4_db7ft")]
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="ResetBox3" unique_id=1929621673]
 position = Vector2(-750, -117)
