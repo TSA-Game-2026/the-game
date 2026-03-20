@@ -5,11 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://b1vmn6ir6nun" path="res://paytenemy.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dqpueb35voxr" path="res://prehistoric_arena.tscn" id="4_lquwl"]
 
-[node name="Main" type="Node2D" unique_id=1615659742]
+[node name="Main" type="Node2D" unique_id=1615659742 node_paths=PackedStringArray("arena")]
 texture_filter = 5
 script = ExtResource("1_ig7tw")
+arena = NodePath("PrehistoricArena")
 
-[node name="Spacearena" parent="." unique_id=237975841 instance=ExtResource("4_lquwl")]
+[node name="PrehistoricArena" parent="." unique_id=237975841 instance=ExtResource("4_lquwl")]
 
 [node name="Player" parent="." unique_id=1419529368 instance=ExtResource("2_0xm2m")]
 position = Vector2(-147, -364)

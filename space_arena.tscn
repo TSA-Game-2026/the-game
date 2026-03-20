@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bsefipfo45wnl"]
 
 [ext_resource type="Texture2D" uid="uid://5m7k3mnrpjrw" path="res://assets/Sprite-0001.png" id="1_23odi"]
+[ext_resource type="Script" uid="uid://h4xlue4d6u7r" path="res://arena.gd" id="1_cgrsl"]
 [ext_resource type="Texture2D" uid="uid://cwunfqstxfx0j" path="res://assets/Sprite-0002.png" id="2_04yq1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7yi6"]
@@ -14,8 +15,9 @@ texture = ExtResource("1_23odi")
 [sub_resource type="TileSet" id="TileSet_3rcmx"]
 sources/0 = SubResource("TileSetAtlasSource_i7yi6")
 
-[node name="Spacearena" type="Node2D" unique_id=237975841]
+[node name="SpaceArena" type="Node2D" unique_id=237975841]
 texture_filter = 5
+script = ExtResource("1_cgrsl")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=921857963]
 scale = Vector2(2, 2)

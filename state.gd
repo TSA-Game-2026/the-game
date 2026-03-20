@@ -1,12 +1,15 @@
 @abstract class_name State
 extends Node
 
+
+## The main node
+@onready var main: Main = self.get_tree().current_scene
 ## The behaviour manager this state is attached to
 @onready var manager: BehaviourManager = self.get_parent()
 ## The enemy this state is attached to
 @onready var enemy: Enemy = manager.get_parent()
 ## The player that this enemy is fighting
-@onready var player: Player = self.get_tree().current_scene.get_node("Player")
+@onready var player: Player = main.get_node("Player")
 
 
 ## Called when this state becomes the current state

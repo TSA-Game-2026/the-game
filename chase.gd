@@ -15,7 +15,15 @@ func _enter():
 
 
 func _loop(delta: float):
-	enemy.move_direction = sign(player.position.x - enemy.position.x)
+	if enemy.position.x < main.arena.left_marker.position.x:
+		enemy.move_direction = 1
+	
+	elif enemy.position.x > main.arena.right_marker.position.x:
+		enemy.move_direction = -1
+	
+	else:
+		enemy.move_direction = sign(player.position.x - enemy.position.x)
+	
 	
 	fall_if_above()
 	
