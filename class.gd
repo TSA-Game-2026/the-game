@@ -12,6 +12,7 @@ var cooldown_timer = 0
 
 
 func _process(delta: float) -> void:
+	$AnimatedSprite2D.flip_h = get_parent().facing_direction == -1
 	if cooldown_timer > 0:
 		cooldown_timer = maxf(0, cooldown_timer - delta)
 		if cooldown_timer == 0:

@@ -12,4 +12,10 @@ extends Node2D
 @export var animation_time: float = 0.5 
 
 
+func _process(_delta: float) -> void:
+	for child in get_children():
+		if child is AnimatedSprite2D or child is Sprite2D:
+			child.flip_h = player.facing_direction == -1
+
+
 @abstract func attack()
