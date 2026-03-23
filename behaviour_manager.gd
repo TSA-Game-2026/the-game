@@ -10,7 +10,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	current_state._loop(delta)
+	var enemy: Enemy = get_parent()
+	if enemy.stun_timer == 0:
+		current_state._loop(delta)
 
 
 ## Exits the current state and switches to the given state.

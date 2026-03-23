@@ -1,21 +1,23 @@
 [gd_scene format=3 uid="uid://0lwsda1h6tbn"]
 
 [ext_resource type="Script" uid="uid://ddx7v1rfiwggg" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://bcomar5ym8f07" path="res://caveman.tscn" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 
-[node name="Player" type="CharacterBody2D" unique_id=213372796]
+[node name="Player" type="CharacterBody2D" unique_id=213372796 node_paths=PackedStringArray("current_class")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_4flbx")
+current_class = NodePath("Caveman")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1597254225]
 shape = SubResource("CapsuleShape2D_onrkg")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=312321475]
-offset_left = -11.0
-offset_top = -16.0
-offset_right = 11.0
-offset_bottom = 16.0
-color = Color(0, 1, 1, 1)
+[node name="Caveman" parent="." unique_id=279445006 node_paths=PackedStringArray("attack_mapping") instance=ExtResource("2_onrkg")]
+attack_mapping = {
+"primary_attack": NodePath("NormalPunch"),
+"secondary_attack": null,
+"tertiary_attack": null
+}

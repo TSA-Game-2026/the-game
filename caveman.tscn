@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bcomar5ym8f07"]
+
+[ext_resource type="PackedScene" uid="uid://e6oq6c8obthm" path="res://class.tscn" id="1_uhig7"]
+[ext_resource type="PackedScene" uid="uid://ci46w32pmf1rf" path="res://normal_punch.tscn" id="2_7lo4x"]
+
+[node name="Caveman" unique_id=279445006 node_paths=PackedStringArray("attack_mapping") instance=ExtResource("1_uhig7")]
+attack_mapping = {
+"primary_attack": NodePath("NormalPunch"),
+"secondary_attack": null,
+"tertiary_attack": null
+}
+
+[node name="SpritePlaceholder" type="ColorRect" parent="." index="1" unique_id=1956495016]
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 11.0
+offset_bottom = 16.0
+color = Color(0, 1, 1, 1)
+
+[node name="NormalPunch" parent="." index="2" unique_id=960570771 instance=ExtResource("2_7lo4x")]

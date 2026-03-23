@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ci46w32pmf1rf"]
+
+[ext_resource type="PackedScene" uid="uid://discjba2s6lqu" path="res://attack.tscn" id="1_ck134"]
+[ext_resource type="Script" uid="uid://q8g53bnbdj71" path="res://normal_punch.gd" id="2_hd7eh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ck134"]
+size = Vector2(58, 32)
+
+[node name="NormalPunch" unique_id=960570771 instance=ExtResource("1_ck134")]
+script = ExtResource("2_hd7eh")
+knockback = Vector2(700, -600)
+cooldown = 0.5
+stun_time = 0.3
+animation_time = 0.3
+
+[node name="ColorRect" type="ColorRect" parent="." index="0" unique_id=1855295727]
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 11.0
+offset_bottom = 16.0
+color = Color(0.3639872, 0.9999997, 0.8493628, 1)
+
+[node name="AttackBox" type="Area2D" parent="." index="1" unique_id=299051755]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" index="0" unique_id=1707223159]
+shape = SubResource("RectangleShape2D_ck134")

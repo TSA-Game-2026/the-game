@@ -2,6 +2,9 @@ class_name Player
 extends Character
 
 
+@export var current_class: Class
+
+
 func _physics_process(delta: float) -> void:
 	super(delta)
 	
@@ -10,3 +13,5 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("move_up"):
 		jump_if_grounded()
+	
+	current_class.attack_if_pressed()

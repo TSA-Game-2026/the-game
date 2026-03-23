@@ -5,9 +5,10 @@ const TRACKING_MARGIN = 10
 
 @export var attack_box: Area2D
 @export var hit_state: State
-@export var attack_in_range_time: float = 0.1
+@export var attack_in_range_min_time: float = 0.1
+@export var attack_in_range_max_time: float = 0.4
 
-var attack_timer = attack_in_range_time
+var attack_timer = attack_in_range_max_time
 
 
 func _enter():
@@ -34,7 +35,7 @@ func _loop(delta: float):
 		if attack_timer <= 0:
 			manager.change_state(hit_state)
 	else:
-		attack_timer = attack_in_range_time
+		attack_timer = randf_range(attack_in_range_min_time, attack_in_range_max_time)
 
 
 func _exit():

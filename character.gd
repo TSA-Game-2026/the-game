@@ -12,7 +12,7 @@ var normal_mask = 0b00000011 # dont fall through platforms
 var fall_mask   = 0b00000001 # do fall through platforms
 
 ## The direction that this character is trying to move
-var move_direction = 0
+var move_direction: float = 0
 ## The last direction that the character moved in
 var facing_direction = -1
 ## How much damage this character has takn
@@ -20,10 +20,12 @@ var damage_taken = 0
 ## Whether or not this character will fall through platforms
 var falling = false
 
+var stun_timer: float = 0
+
 
 
 func _physics_process(delta: float) -> void:
-	velocity.x = move_toward(velocity.x, move_direction * speed, delta * (ground_acceleration if is_on_floor() else air_acceleration))
+	velocity.x = move_toward(velocity.x, (move_direction * speed) if (stun_timer <= 0) else 0.0, delta * (ground_acceleration if is_on_floor() else air_acceleration))
 	
 	if !is_on_floor():
 		velocity += get_gravity()
@@ -33,12 +35,20 @@ func _physics_process(delta: float) -> void:
 	
 	collision_mask = normal_mask if !falling else fall_mask
 	
+	if stun_timer > 0:
+		stun_timer = maxf(0, stun_timer - delta)
+	
 	move_and_slide()
 
 
 func damage(damage_amt: float, knockback: Vector2):
 	damage_taken += damage_amt
 	velocity = knockback * (1 + damage_taken * damage_knockback_mult)
+	stun(0.25)
+
+
+func stun(stun_time: float):
+	stun_timer = stun_time
 
 
 func reset():
