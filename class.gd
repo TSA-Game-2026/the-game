@@ -29,4 +29,4 @@ func attack_if_pressed():
 				child.hide()
 			attack.show()
 			attack.attack()
-			
+			get_parent().attack.emit()

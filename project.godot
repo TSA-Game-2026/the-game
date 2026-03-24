@@ -19,6 +19,10 @@ run/main_scene="uid://cdkagh6rnpxyb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/stretch/mode="viewport"
@@ -82,7 +86,7 @@ tertiary_attack={
 
 [physics]
 
-2d/default_gravity=80.0
+2d/default_gravity=50.0
 
 [rendering]
 

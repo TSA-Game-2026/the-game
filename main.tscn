@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://b1vmn6ir6nun" path="res://paytenemy.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dqpueb35voxr" path="res://prehistoric_arena.tscn" id="4_lquwl"]
 
-[node name="Main" type="Node2D" unique_id=1615659742 node_paths=PackedStringArray("arena")]
+[node name="Main" type="Node2D" unique_id=1615659742 node_paths=PackedStringArray("current_arena")]
 texture_filter = 5
 script = ExtResource("1_ig7tw")
-arena = NodePath("PrehistoricArena")
+current_arena = NodePath("PrehistoricArena")
 
 [node name="PrehistoricArena" parent="." unique_id=237975841 instance=ExtResource("4_lquwl")]
 

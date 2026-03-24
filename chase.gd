@@ -16,11 +16,13 @@ func _enter():
 
 
 func _loop(delta: float):
-	if enemy.position.x < main.arena.left_marker.position.x:
+	if enemy.position.x < main.current_arena.left_marker.position.x:
 		enemy.move_direction = 1
+		enemy.try_jump()
 	
-	elif enemy.position.x > main.arena.right_marker.position.x:
+	elif enemy.position.x > main.current_arena.right_marker.position.x:
 		enemy.move_direction = -1
+		enemy.try_jump()
 	
 	else:
 		enemy.move_direction = sign(player.position.x - enemy.position.x)
@@ -32,7 +34,7 @@ func _loop(delta: float):
 	
 	if player in attack_box.get_overlapping_bodies():
 		attack_timer -= delta
-		if attack_timer <= 0:
+		if attack_timer <= 0 and player.i_timer <= 0:
 			manager.change_state(hit_state)
 	else:
 		attack_timer = randf_range(attack_in_range_min_time, attack_in_range_max_time)
@@ -51,4 +53,4 @@ func fall_if_above():
 func jump_if_below():
 	var jump_cond = func(): return player.position.y + TRACKING_MARGIN < enemy.position.y
 	if jump_cond.call():
-		wait_and_check(.5, enemy.jump_if_grounded, jump_cond)
+		wait_and_check(.5, enemy.try_jump, jump_cond)
