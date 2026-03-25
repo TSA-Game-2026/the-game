@@ -9,7 +9,7 @@ func _ready() -> void:
 	current_state._enter()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var enemy: Enemy = get_parent()
 	if enemy.stun_timer == 0:
 		current_state._loop(delta)

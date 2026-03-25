@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cy4xlj2xj7sqt" path="res://enemy.gd" id="1_7k104"]
 [ext_resource type="Script" uid="uid://cwca8vui8evqi" path="res://behaviour_manager.gd" id="2_4gyqm"]
-[ext_resource type="Script" uid="uid://ykys45xeer6" path="res://chase.gd" id="3_qi2p4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7xaro"]
 
@@ -23,8 +22,4 @@ color = Color(1, 0.21176471, 0, 1)
 
 [node name="BehaviourManager" type="Node" parent="." unique_id=1782368210 node_paths=PackedStringArray("current_state")]
 script = ExtResource("2_4gyqm")
-current_state = NodePath("Chase")
-
-[node name="Chase" type="Node" parent="BehaviourManager" unique_id=1588153514]
-script = ExtResource("3_qi2p4")
-metadata/_custom_type_script = "uid://c6lolkrfom4kb"
+current_state = NodePath("")

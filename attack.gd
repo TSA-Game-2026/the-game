@@ -1,8 +1,11 @@
 @abstract class_name Attack
 extends Node2D
 
-
+## The main node
+@onready var main: Main = self.get_tree().current_scene
+## The current class of the player
 @onready var player_class: Class = get_parent()
+## The player that this enemy is fighting
 @onready var player: Player = player_class.get_parent()
 
 @export var damage: float = 5
