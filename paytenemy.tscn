@@ -24,4 +24,3 @@ script = ExtResource("2_i0ets")
 attack_box = NodePath("../../AttackBox")
 next_state = NodePath("../Chase")
 knockback_strength = Vector2(700, -600)
-damage = 10.0
