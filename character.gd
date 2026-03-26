@@ -5,7 +5,7 @@ extends CharacterBody2D
 signal jump
 signal attack
 
-const jump_delay = .1
+const jump_delay = .5
 const terminal_velocity = 800
 
 @export var speed := 350.0
@@ -42,20 +42,21 @@ func _physics_process(delta: float) -> void:
 		velocity.y = min(terminal_velocity, velocity.y + get_gravity().y)
 	else:
 		jumps = 1
-		if !prev_on_floor:
-			jump_timer = jump_delay
+	if is_on_floor() and not prev_on_floor:
+		print("NO JUMP")
+		jump_timer = jump_delay
 	
 	if velocity.x != 0:
 		facing_direction = sign(velocity.x)
 	
 	collision_mask = normal_mask if !falling else fall_mask
 	
+	if jump_timer > 0:
+		jump_timer = maxf(0, jump_timer - delta)
 	if stun_timer > 0:
 		stun_timer = maxf(0, stun_timer - delta)
 	if i_timer > 0:
 		i_timer = maxf(0, i_timer - delta)
-	if jump_timer > 0:
-		jump_timer = maxf(0, jump_timer - delta)
 	
 	move_and_slide()
 	

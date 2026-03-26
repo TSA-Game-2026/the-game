@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bsefipfo45wnl" path="res://space_arena.tscn" id="1_exmpl"]
 [ext_resource type="PackedScene" uid="uid://0lwsda1h6tbn" path="res://player.tscn" id="2_2bek1"]
 [ext_resource type="PackedScene" uid="uid://bdumu10u64dqx" path="res://alenemy.tscn" id="4_2bek1"]
+[ext_resource type="PackedScene" uid="uid://b6fptbtnmxupx" path="res://gui.tscn" id="5_vkgmu"]
 
 [node name="SpaceTest" type="Node2D" unique_id=1159449338 node_paths=PackedStringArray("current_arena")]
 script = ExtResource("1_2bek1")
@@ -18,3 +19,7 @@ position = Vector2(-151, -360)
 
 [node name="Enemy" parent="." unique_id=1437868065 instance=ExtResource("4_2bek1")]
 position = Vector2(177, -368)
+
+[node name="GUI" parent="." unique_id=1327299408 node_paths=PackedStringArray("player", "enemy") instance=ExtResource("5_vkgmu")]
+player = NodePath("../Player")
+enemy = NodePath("../Enemy")

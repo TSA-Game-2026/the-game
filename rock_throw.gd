@@ -8,14 +8,15 @@ extends State
 @export var rock: PackedScene = preload("res://rock.tscn")
 
 @export var stun_time: float = 1
-@export var cooldown: float = 6
+@export var min_cooldown: float = 4
+@export var max_cooldown: float = 6
 
-var cooldown_timer: float = 0
+var cooldown_timer: float = max_cooldown
 
 
 func _enter():
 	enemy.move_direction = 0
-	cooldown_timer = cooldown
+	cooldown_timer = randf_range(min_cooldown, max_cooldown)
 	
 	var new_rock: RigidBody2D = rock.instantiate()
 	new_rock.position = enemy.global_position

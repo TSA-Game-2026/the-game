@@ -4,7 +4,7 @@
 
 [node name="ResetBox" type="Area2D" unique_id=956074767]
 collision_layer = 0
-collision_mask = 12
+collision_mask = 28
 script = ExtResource("1_jpdf8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

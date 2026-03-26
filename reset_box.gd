@@ -5,5 +5,8 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
-	body.reset()
-	body.position = marker.position
+	if body is Character:
+		body.reset()
+		body.position = marker.position
+	else:
+		body.queue_free()

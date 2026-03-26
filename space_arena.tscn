@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cwunfqstxfx0j" path="res://assets/Sprite-0002.png" id="2_04yq1"]
 [ext_resource type="PackedScene" uid="uid://cy6knb0hkiaq3" path="res://reset_box.tscn" id="4_eyx0u"]
 [ext_resource type="PackedScene" uid="uid://b0yqgjm8bmxy7" path="res://grab_point.tscn" id="5_ft0jw"]
+[ext_resource type="PackedScene" uid="uid://mvvvnw62prul" path="res://rock_spawner.tscn" id="6_18df1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eyx0u"]
 texture = ExtResource("1_23odi")
@@ -113,3 +114,13 @@ position = Vector2(-328, 32)
 
 [node name="GrabPoint2" parent="." unique_id=1443169493 instance=ExtResource("5_ft0jw")]
 position = Vector2(328, 32)
+
+[node name="RockSpawner" parent="." unique_id=242763849 node_paths=PackedStringArray("top_left_marker", "bottom_right_marker") instance=ExtResource("6_18df1")]
+top_left_marker = NodePath("Marker2D")
+bottom_right_marker = NodePath("Marker2D2")
+
+[node name="Marker2D" type="Marker2D" parent="RockSpawner" unique_id=1940810792]
+position = Vector2(-712, -385)
+
+[node name="Marker2D2" type="Marker2D" parent="RockSpawner" unique_id=2093085337]
+position = Vector2(-648, 147)
