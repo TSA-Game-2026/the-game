@@ -24,3 +24,5 @@ position = Vector2(150, -358)
 [node name="GUI" parent="." unique_id=1327299408 node_paths=PackedStringArray("player", "enemy") instance=ExtResource("5_lquwl")]
 player = NodePath("../Player")
 enemy = NodePath("../Enemy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1896850913]

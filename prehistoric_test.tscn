@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://di81fgm0rboql"]
+
+[ext_resource type="Script" uid="uid://b5jn1w2d7m3vi" path="res://main.gd" id="1_bwlks"]
+[ext_resource type="PackedScene" uid="uid://dqpueb35voxr" path="res://prehistoric_arena.tscn" id="1_waffe"]
+[ext_resource type="PackedScene" uid="uid://0lwsda1h6tbn" path="res://player.tscn" id="2_bwlks"]
+[ext_resource type="PackedScene" uid="uid://b1vmn6ir6nun" path="res://paytenemy.tscn" id="3_hm3qm"]
+[ext_resource type="PackedScene" uid="uid://b6fptbtnmxupx" path="res://gui.tscn" id="4_jueev"]
+
+[node name="PrehistoricTest" type="Node2D" unique_id=337457288 node_paths=PackedStringArray("player", "enemy", "current_arena")]
+script = ExtResource("1_bwlks")
+player = NodePath("Player")
+enemy = NodePath("Enemy")
+current_arena = NodePath("PrehistoricArena")
+
+[node name="PrehistoricArena" parent="." unique_id=237975841 instance=ExtResource("1_waffe")]
+
+[node name="Player" parent="." unique_id=213372796 instance=ExtResource("2_bwlks")]
+position = Vector2(-147, -364)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=326713226]
+
+[node name="Enemy" parent="." unique_id=1437868065 instance=ExtResource("3_hm3qm")]
+position = Vector2(150, -358)
+
+[node name="GUI" parent="." unique_id=1327299408 node_paths=PackedStringArray("player", "enemy") instance=ExtResource("4_jueev")]
+player = NodePath("")
+enemy = NodePath("")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1592197477]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://h4xlue4d6u7r" path="res://arena.gd" id="1_4rfdh"]
 [ext_resource type="Texture2D" uid="uid://clg4sikxrcc3n" path="res://assets/prehPlatforms.png" id="1_fni4a"]
 [ext_resource type="Texture2D" uid="uid://gulhrngwj1cu" path="res://assets/prehBG.png" id="2_db7ft"]
+[ext_resource type="AudioStream" uid="uid://dc3icosx56i7r" path="res://assets/music/prehistoric_music (1).wav" id="2_u6s2i"]
 [ext_resource type="Texture2D" uid="uid://fpna8hx6xbg5" path="res://assets/Sprite-clouds.png" id="3_4rfdh"]
 [ext_resource type="PackedScene" uid="uid://cy6knb0hkiaq3" path="res://reset_box.tscn" id="4_db7ft"]
 [ext_resource type="PackedScene" uid="uid://b0yqgjm8bmxy7" path="res://grab_point.tscn" id="6_qy664"]
@@ -63,6 +64,7 @@ script = ExtResource("1_4rfdh")
 spawn_marker = NodePath("RespawnMarker")
 left_marker = NodePath("LeftMarker")
 right_marker = NodePath("RightMarker")
+music = ExtResource("2_u6s2i")
 
 [node name="TileMapBase" type="TileMapLayer" parent="." unique_id=921857963]
 scale = Vector2(2, 2)

@@ -7,6 +7,11 @@ enum Arenas {
 	SPACE,
 }
 
+## The player character
+@export var player: Player
+## The current enemy character
+@export var enemy: Enemy
+
 ## The arena that is currently in play
 @export var current_arena: Arena
 
@@ -14,7 +19,12 @@ enum Arenas {
 @export var space_arena: PackedScene = preload("res://space_arena.tscn")
 
 
-func change_arena(new_arena: Arenas):
+func _ready() -> void:
+	$AudioStreamPlayer.stream = current_arena.music
+	$AudioStreamPlayer.play()
+
+
+func change_arena(new_arena: Arenas) -> void:
 	current_arena.queue_free()
 	var arena_inst
 	
@@ -26,3 +36,6 @@ func change_arena(new_arena: Arenas):
 	
 	add_child(arena_inst)
 	current_arena = arena_inst
+	
+	player.position.y = -350
+	enemy.position.y = -350

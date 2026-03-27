@@ -2,8 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://5m7k3mnrpjrw" path="res://assets/Sprite-0001.png" id="1_23odi"]
 [ext_resource type="Script" uid="uid://h4xlue4d6u7r" path="res://arena.gd" id="1_cgrsl"]
-[ext_resource type="Texture2D" uid="uid://cwunfqstxfx0j" path="res://assets/Sprite-0002.png" id="2_04yq1"]
+[ext_resource type="AudioStream" uid="uid://cwq7xroy5ggrm" path="res://assets/music/space_song.wav" id="2_320kl"]
+[ext_resource type="Texture2D" uid="uid://ciyd2ctkw1484" path="res://assets/image(1).png" id="3_18df1"]
 [ext_resource type="PackedScene" uid="uid://cy6knb0hkiaq3" path="res://reset_box.tscn" id="4_eyx0u"]
+[ext_resource type="Script" uid="uid://boig8sak56vmp" path="res://space_modulate.gd" id="4_xbdss"]
 [ext_resource type="PackedScene" uid="uid://b0yqgjm8bmxy7" path="res://grab_point.tscn" id="5_ft0jw"]
 [ext_resource type="PackedScene" uid="uid://mvvvnw62prul" path="res://rock_spawner.tscn" id="6_18df1"]
 
@@ -59,6 +61,7 @@ script = ExtResource("1_cgrsl")
 spawn_marker = NodePath("RespawnMarker")
 left_marker = NodePath("LeftMarker")
 right_marker = NodePath("RightMarker")
+music = ExtResource("2_320kl")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=921857963]
 scale = Vector2(2, 2)
@@ -66,10 +69,12 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAACAAAAAAABAAEAAAACAAEAAAABAAE
 tile_set = SubResource("TileSet_ft0jw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=138946388]
+self_modulate = Color(1, 0.19607843, 0.39215687, 1)
 z_index = -1
 position = Vector2(-1962.9998, -1322.9999)
 scale = Vector2(3.6332033, 3.5361328)
-texture = ExtResource("2_04yq1")
+texture = ExtResource("3_18df1")
+script = ExtResource("4_xbdss")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=151251175]
 scale = Vector2(2, 2)
