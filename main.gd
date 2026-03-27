@@ -6,7 +6,7 @@ enum Arenas {
 	PREHISTORIC,
 	SPACE,
 }
-
+ 
 ## The player character
 @export var player: Player
 ## The current enemy character
