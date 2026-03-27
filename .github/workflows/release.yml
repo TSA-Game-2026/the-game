@@ -155,6 +155,6 @@ jobs:
             build/Windows.exe
             build/Linux.x86_64
             build/MacOS.zip
-          body: "Web build: [Github Pages](https://tsa-video-game-24-25.github.io/game.github.io/)"
+          body: "Web build: [Github Pages](https://TSA-Game-2026.github.io/game.github.io/)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
