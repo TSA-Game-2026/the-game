@@ -6,11 +6,6 @@ enum Arenas {
 	PREHISTORIC,
 	SPACE,
 }
- 
-## The player character
-@export var player: Player
-## The current enemy character
-@export var enemy: Enemy
 
 ## The arena that is currently in play
 @export var current_arena: Arena
@@ -18,13 +13,16 @@ enum Arenas {
 @export var prehistoric_arena: PackedScene = preload("res://prehistoric_arena.tscn")
 @export var space_arena: PackedScene = preload("res://space_arena.tscn")
 
+@onready var player: Player = get_node("Player")
+@onready var enemy: Enemy = get_node("Enemy")
+
 
 func _ready() -> void:
 	$AudioStreamPlayer.stream = current_arena.music
 	$AudioStreamPlayer.play()
 
 
-func change_arena(new_arena: Arenas) -> void:
+func set_arena(new_arena: Arenas) -> void:
 	current_arena.queue_free()
 	var arena_inst
 	
