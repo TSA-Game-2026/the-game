@@ -15,18 +15,18 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = get_parent().facing_direction == -1
 	if cooldown_timer > 0:
 		cooldown_timer = maxf(0, cooldown_timer - delta)
-		if cooldown_timer == 0:
-			for child in get_children():
-				child.hide()
-			show()
+		#if cooldown_timer <= 0:
+			#for child in get_children():
+				#child.hide()
+			#$AnimatedSprite2D.show()
 
 
 func attack_if_pressed():
 	for action in attack_mapping:
 		var attack = attack_mapping[action]
 		if Input.is_action_just_pressed(action) and cooldown_timer == 0:
-			for child in get_children():
-				child.hide()
-			attack.show()
+			#for child in get_children():
+				#child.hide()
+			#attack.show()
 			attack.attack()
 			get_parent().attack.emit()

@@ -10,11 +10,18 @@
 texture_filter = 5
 script = ExtResource("1_ig7tw")
 current_arena = NodePath("PrehistoricArena")
+prehistoric_arena = null
+space_arena = null
 
 [node name="PrehistoricArena" parent="." unique_id=237975841 instance=ExtResource("4_lquwl")]
 
 [node name="Player" parent="." unique_id=1419529368 instance=ExtResource("2_0xm2m")]
 position = Vector2(-147, -364)
+speed = null
+ground_acceleration = null
+air_acceleration = null
+jump_strength = null
+damage_knockback_mult = null
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1594719984]
 

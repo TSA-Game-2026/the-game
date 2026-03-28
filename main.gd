@@ -37,3 +37,6 @@ func set_arena(new_arena: Arenas) -> void:
 	
 	player.position.y = -350
 	enemy.position.y = -350
+
+func level_over() -> void:
+	pass

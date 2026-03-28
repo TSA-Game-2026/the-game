@@ -3,17 +3,44 @@
 [ext_resource type="PackedScene" uid="uid://mgmog6p57yn1" path="res://enemy.tscn" id="1_t25c3"]
 [ext_resource type="Script" uid="uid://ykys45xeer6" path="res://chase.gd" id="2_gq4xu"]
 [ext_resource type="Script" uid="uid://kxd3t770o8af" path="res://punch.gd" id="2_i0ets"]
+[ext_resource type="Texture2D" uid="uid://3fqhh82hcumq" path="res://assets/Short Soldier Man.png" id="4_gq4xu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvqxw"]
+size = Vector2(30, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t25c3"]
-size = Vector2(58, 32)
+size = Vector2(58, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo8oy"]
+atlas = ExtResource("4_gq4xu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cyc0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo8oy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" unique_id=1437868065 instance=ExtResource("1_t25c3")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1686214274]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_gvqxw")
+
+[node name="ColorRect" parent="." index="1" unique_id=852334106]
+visible = false
 
 [node name="AttackBox" type="Area2D" parent="." index="2" unique_id=499714958]
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" index="0" unique_id=1746373242]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_t25c3")
 
 [node name="BehaviourManager" parent="." index="3" unique_id=1782368210 node_paths=PackedStringArray("current_state")]
@@ -30,3 +57,6 @@ script = ExtResource("2_i0ets")
 attack_box = NodePath("../../AttackBox")
 next_state = NodePath("../Chase")
 knockback_strength = Vector2(700, -600)
+
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=734612265]
+sprite_frames = SubResource("SpriteFrames_cyc0p")

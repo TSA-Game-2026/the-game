@@ -25,6 +25,8 @@ var facing_direction = -1
 var damage_taken = 0
 ## Whether or not this character will fall through platforms
 var falling = false
+## How many lives this character has left
+var lives: int = 2
 
 var jumps: int = 0
 var jump_timer: float = 0
@@ -82,6 +84,9 @@ func set_invulnerable(time: float):
 func reset():
 	velocity = Vector2.ZERO
 	damage_taken = 0
+	lives -= 1
+	if lives <= 0:
+		get_parent().level_over()
 
 
 func try_jump() -> bool:
