@@ -136,10 +136,7 @@ jobs:
       contents: write
       deployments: write
     needs: 
-      - export-mac
       - export-web
-      - export-linux
-      - export-windows
     
     steps:
       - name: Checkout Repository
@@ -149,28 +146,6 @@ jobs:
         id: version
         run: echo "VERSION=$(cat Version)" >> $GITHUB_ENV
 
-      - name: Download Windows Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-build
-          path: build/windows
-
-      - name: Download Linux Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: linux-build
-          path: build/linux
-
-      - name: Download Mac Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: mac-build
-          path: build/mac
-      - name: Rename files
-        run: |
-          mv build/windows/app.exe build/Windows.exe
-          mv build/linux/app.x86_64 build/Linux.x86_64
-          mv build/mac/app.zip build/MacOS.zip
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
@@ -180,6 +155,6 @@ jobs:
             build/Windows.exe
             build/Linux.x86_64
             build/MacOS.zip
-          body: "Web build: [Github Pages](https://tsa-video-game-24-25.github.io/game.github.io/)"
+          body: "Web build: [Github Pages](https://TSA-Game-2026.github.io/game.github.io/)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
