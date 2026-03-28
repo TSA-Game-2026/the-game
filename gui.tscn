@@ -291,17 +291,25 @@ offset_bottom = 480.0
 theme_override_font_sizes/font_size = 42
 text = "Play"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel2" unique_id=192085699]
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel2" unique_id=1712436599]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -258.0
-offset_top = -196.0
-offset_right = 256.0
-offset_bottom = -4.0
+offset_left = -263.0
+offset_top = -201.0
+offset_right = 261.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel2/Panel" unique_id=192085699]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
