@@ -1,35 +1,20 @@
 [gd_scene format=3 uid="uid://cdkagh6rnpxyb"]
 
 [ext_resource type="Script" uid="uid://b5jn1w2d7m3vi" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://0lwsda1h6tbn" path="res://player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b1vmn6ir6nun" path="res://paytenemy.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dqpueb35voxr" path="res://prehistoric_arena.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b6fptbtnmxupx" path="res://gui.tscn" id="5_lquwl"]
 
-[node name="Main" type="Node2D" unique_id=1615659742 node_paths=PackedStringArray("current_arena")]
+[node name="Main" type="Node2D" unique_id=1615659742]
 texture_filter = 5
 script = ExtResource("1_ig7tw")
-current_arena = NodePath("PrehistoricArena")
-prehistoric_arena = null
-space_arena = null
-
-[node name="PrehistoricArena" parent="." unique_id=237975841 instance=ExtResource("4_lquwl")]
-
-[node name="Player" parent="." unique_id=1419529368 instance=ExtResource("2_0xm2m")]
-position = Vector2(-147, -364)
-speed = null
-ground_acceleration = null
-air_acceleration = null
-jump_strength = null
-damage_knockback_mult = null
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1594719984]
 
-[node name="Enemy" parent="." unique_id=1437868065 instance=ExtResource("4_1bvp3")]
-position = Vector2(150, -358)
-
-[node name="GUI" parent="." unique_id=1327299408 node_paths=PackedStringArray("player", "enemy") instance=ExtResource("5_lquwl")]
-player = NodePath("../Player")
-enemy = NodePath("../Enemy")
+[node name="GUI" parent="." unique_id=1327299408 instance=ExtResource("5_lquwl")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1896850913]
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1562691768]
+position = Vector2(-290, -396)
+
+[node name="EnemySpawn" type="Marker2D" parent="." unique_id=1360801158]
+position = Vector2(223, -396)
