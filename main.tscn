@@ -5,6 +5,23 @@
 [ext_resource type="PackedScene" uid="uid://b1vmn6ir6nun" path="res://paytenemy.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dqpueb35voxr" path="res://prehistoric_arena.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b6fptbtnmxupx" path="res://gui.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://mgmog6p57yn1" path="res://enemy.tscn" id="6_272bh"]
+[ext_resource type="Script" uid="uid://dsrx1633wgsbd" path="res://nothing.gd" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://3fqhh82hcumq" path="res://assets/Short Soldier Man.png" id="8_5vw27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
+size = Vector2(28, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kek77"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5vw27")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D" unique_id=1615659742 node_paths=PackedStringArray("current_arena")]
 texture_filter = 5
@@ -17,15 +34,11 @@ space_arena = null
 
 [node name="Player" parent="." unique_id=1419529368 instance=ExtResource("2_0xm2m")]
 position = Vector2(-147, -364)
-speed = null
-ground_acceleration = null
-air_acceleration = null
-jump_strength = null
-damage_knockback_mult = null
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1594719984]
 
 [node name="Enemy" parent="." unique_id=1437868065 instance=ExtResource("4_1bvp3")]
+process_mode = 4
 position = Vector2(150, -358)
 
 [node name="GUI" parent="." unique_id=1327299408 node_paths=PackedStringArray("player", "enemy") instance=ExtResource("5_lquwl")]
@@ -33,3 +46,24 @@ player = NodePath("../Player")
 enemy = NodePath("../Enemy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1896850913]
+
+[node name="Enemy2" parent="." unique_id=751486650 instance=ExtResource("6_272bh")]
+position = Vector2(0, -36)
+
+[node name="CollisionShape2D" parent="Enemy2" index="0" unique_id=1686214274]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="ColorRect" parent="Enemy2" index="1" unique_id=852334106]
+visible = false
+
+[node name="BehaviourManager" parent="Enemy2" index="2" unique_id=1782368210 node_paths=PackedStringArray("current_state")]
+current_state = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="Enemy2/BehaviourManager" index="0" unique_id=2139245297]
+script = ExtResource("7_5vw27")
+
+[node name="AnimatedSprite2D" parent="Enemy2" index="3" unique_id=734612265]
+sprite_frames = SubResource("SpriteFrames_kek77")
+
+[editable path="Enemy2"]
