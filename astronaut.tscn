@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dlbiku4yxqhw"]
+
+[ext_resource type="PackedScene" uid="uid://e6oq6c8obthm" path="res://class.tscn" id="1_gtphq"]
+[ext_resource type="Texture2D" uid="uid://dcwhqjoqv3ab0" path="res://assets/Astronaut Alien FInished.png" id="2_6cnut"]
+[ext_resource type="PackedScene" uid="uid://ci46w32pmf1rf" path="res://normal_punch.tscn" id="2_roq07"]
+[ext_resource type="Script" uid="uid://w0qe2to0ygfh" path="res://throw_rock.gd" id="3_pw13x"]
+[ext_resource type="PackedScene" uid="uid://tpl8vkqj8m8r" path="res://laser.tscn" id="4_pw13x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5k3e"]
+atlas = ExtResource("2_6cnut")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3ec0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5k3e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Astronaut" unique_id=279445006 node_paths=PackedStringArray("attack_mapping") instance=ExtResource("1_gtphq")]
+attack_mapping = {
+"primary_attack": NodePath("NormalPunch"),
+"secondary_attack": NodePath("ThrowRock"),
+"tertiary_attack": null
+}
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=969416375]
+sprite_frames = SubResource("SpriteFrames_m3ec0")
+
+[node name="NormalPunch" parent="." index="1" unique_id=960570771 instance=ExtResource("2_roq07")]
+visible = false
+cooldown = 0.3
+
+[node name="ThrowRock" type="Node2D" parent="." index="2" unique_id=100944625]
+visible = false
+scale = Vector2(0.7402344, 0.96875)
+script = ExtResource("3_pw13x")
+rock = ExtResource("4_pw13x")
+knockback = Vector2(500, -400)
