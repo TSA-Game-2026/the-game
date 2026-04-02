@@ -5,18 +5,39 @@ extends Control
 const lives_text = "     x%d"
 
 
-@onready var level_1_button: Button = $CanvasLayer/Panel2/Level1Button
-@onready var level_2_button: Button = $CanvasLayer/Panel2/Level2Button
-@onready var level_3_button: Button = $CanvasLayer/Panel2/Level3Button
-@onready var main_menu: Panel = $CanvasLayer/Panel2
+@onready var level_1_button: Button = $CanvasLayer/MainMenu/Level1Button
+@onready var level_2_button: Button = $CanvasLayer/MainMenu/Level2Button
+@onready var level_3_button: Button = $CanvasLayer/MainMenu/Level3Button
+@onready var main_menu: Panel = $CanvasLayer/MainMenu
+@onready var end_menu = $CanvasLayer/EndMenu
+@onready var win_menu = $CanvasLayer/EndMenu/YouWin
+@onready var lose_menu = $CanvasLayer/EndMenu/YouLose
 
 
-func update(player: Player, enemy: Enemy) -> void:
-	$CanvasLayer/Panel/PlayerDisplay/VBoxContainer/HBoxContainer/VBoxContainer/PlayerDamage.text = str(player.damage_taken) + "%"
-	$CanvasLayer/Panel/EnemyDisplay/VBoxContainer/HBoxContainer/VBoxContainer/EnemyDamage.text = str(enemy.damage_taken) + "%"
-	$CanvasLayer/Panel/PlayerDisplay/VBoxContainer/HBoxContainer/VBoxContainer/PlayerLives.text = lives_text % player.lives
-	$CanvasLayer/Panel/EnemyDisplay/VBoxContainer/HBoxContainer/VBoxContainer/EnemyLives.text = lives_text % enemy.lives
+func _ready() -> void:
+	$CanvasLayer.show()
+
+
+func update(player: Player, enemies: Array[Enemy]) -> void:
+	$CanvasLayer/Overlay/PlayerDisplay/VBoxContainer/HBoxContainer/VBoxContainer/PlayerDamage.text = str(player.damage_taken) + "%"
+	$CanvasLayer/Overlay/PlayerDisplay/VBoxContainer/HBoxContainer/VBoxContainer/PlayerLives.text = lives_text % player.lives
+	
+	$CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer/HBoxContainer/VBoxContainer/EnemyDamage.text = str(enemies[0].damage_taken) + "%"
+	$CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer/HBoxContainer/VBoxContainer/EnemyLives.text = lives_text % enemies[0].lives
+	
+	if len(enemies) == 2:
+		$CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2.show()
+		$CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer/HBoxContainer/VBoxContainer/EnemyDamage.text = str(enemies[1].damage_taken) + "%"
+		$CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer/HBoxContainer/VBoxContainer/EnemyLives.text = lives_text % enemies[1].lives
+	else:
+		$CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2.hide()
 
 
 func _on_button_pressed() -> void:
-	$CanvasLayer/Panel2.hide()
+	$CanvasLayer/MainMenu.hide()
+
+
+func _on_end_button_pressed():
+	main_menu.show()
+	end_menu.hide()
+	get_parent().reset()

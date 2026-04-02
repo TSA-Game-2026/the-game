@@ -140,12 +140,12 @@ expand_margin_right = 16.0
 expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e23it"]
-bg_color = Color(0.99999994, 0.30931994, 0.27343082, 1)
+bg_color = Color(0.9978264, 0.33306235, 0.26497692, 1)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color(0.85490197, 0, 0.07058824, 1)
+border_color = Color(0.68223476, 0.021803627, 0.007237132, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -167,17 +167,21 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbet0"]
-bg_color = Color(1.8289685e-06, 0.7060723, 0.24213469, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k81xp"]
+bg_color = Color(0, 0.8180173, 0.19447047, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(2.695322e-06, 0.63238376, 0.214338, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
 
 [node name="GUI" type="Control" unique_id=1327299408]
 layout_mode = 3
@@ -190,7 +194,7 @@ script = ExtResource("1_80edf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2077712924]
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=55765445]
+[node name="Overlay" type="Panel" parent="CanvasLayer" unique_id=55765445]
 custom_minimum_size = Vector2(700, 130)
 anchors_preset = 7
 anchor_left = 0.5
@@ -204,7 +208,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_80edf")
 
-[node name="PlayerDisplay" type="Panel" parent="CanvasLayer/Panel" unique_id=2079087438]
+[node name="PlayerDisplay" type="Panel" parent="CanvasLayer/Overlay" unique_id=2079087438]
 custom_minimum_size = Vector2(180, 115)
 layout_mode = 1
 anchors_preset = 4
@@ -216,7 +220,7 @@ offset_bottom = 57.5
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6lon5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/PlayerDisplay" unique_id=1360972284]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay/PlayerDisplay" unique_id=1360972284]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,27 +229,27 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/PlayerDisplay/VBoxContainer" unique_id=516819902]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Overlay/PlayerDisplay/VBoxContainer" unique_id=516819902]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Panel/PlayerDisplay/VBoxContainer/HBoxContainer" unique_id=724711775]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Overlay/PlayerDisplay/VBoxContainer/HBoxContainer" unique_id=724711775]
 self_modulate = Color(0, 0, 0, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jf511")
 
-[node name="PlayerImage" type="TextureRect" parent="CanvasLayer/Panel/PlayerDisplay/VBoxContainer/HBoxContainer/PanelContainer" unique_id=488121556]
+[node name="PlayerImage" type="TextureRect" parent="CanvasLayer/Overlay/PlayerDisplay/VBoxContainer/HBoxContainer/PanelContainer" unique_id=488121556]
 texture_filter = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("2_q8o8l")
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/PlayerDisplay/VBoxContainer/HBoxContainer" unique_id=1884214166]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay/PlayerDisplay/VBoxContainer/HBoxContainer" unique_id=1884214166]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="PlayerDamage" type="Label" parent="CanvasLayer/Panel/PlayerDisplay/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=661336008]
+[node name="PlayerDamage" type="Label" parent="CanvasLayer/Overlay/PlayerDisplay/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=661336008]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -255,16 +259,16 @@ text = "20%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerLives" type="Label" parent="CanvasLayer/Panel/PlayerDisplay/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1360691753]
+[node name="PlayerLives" type="Label" parent="CanvasLayer/Overlay/PlayerDisplay/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1360691753]
 layout_mode = 2
 text = "     x2"
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Panel/PlayerDisplay/VBoxContainer" unique_id=1852335852]
+[node name="Panel" type="Panel" parent="CanvasLayer/Overlay/PlayerDisplay/VBoxContainer" unique_id=1852335852]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q8o8l")
 
-[node name="PlayerName" type="Label" parent="CanvasLayer/Panel/PlayerDisplay/VBoxContainer/Panel" unique_id=1932887594]
+[node name="PlayerName" type="Label" parent="CanvasLayer/Overlay/PlayerDisplay/VBoxContainer/Panel" unique_id=1932887594]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -276,22 +280,27 @@ text = "Player 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnemyDisplay" type="Panel" parent="CanvasLayer/Panel" unique_id=1825467808]
-custom_minimum_size = Vector2(180, 115)
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Overlay" unique_id=1952371923]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -180.0
+offset_left = -364.0
 offset_top = -57.5
 offset_bottom = 57.5
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="EnemyDisplay" type="Panel" parent="CanvasLayer/Overlay/HBoxContainer" unique_id=1825467808]
+custom_minimum_size = Vector2(180, 115)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cor1f")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/EnemyDisplay" unique_id=1770179426]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay" unique_id=1770179426]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -300,15 +309,15 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/EnemyDisplay/VBoxContainer" unique_id=164656190]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer" unique_id=164656190]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/EnemyDisplay/VBoxContainer/HBoxContainer" unique_id=1742002673]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer/HBoxContainer" unique_id=1742002673]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="EnemyDamage" type="Label" parent="CanvasLayer/Panel/EnemyDisplay/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=717120397]
+[node name="EnemyDamage" type="Label" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=717120397]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -318,22 +327,22 @@ text = "20%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnemyLives" type="Label" parent="CanvasLayer/Panel/EnemyDisplay/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=849701096]
+[node name="EnemyLives" type="Label" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=849701096]
 layout_mode = 2
 text = "     x2"
 
-[node name="EnemyImage" type="TextureRect" parent="CanvasLayer/Panel/EnemyDisplay/VBoxContainer/HBoxContainer" unique_id=1536311353]
+[node name="EnemyImage" type="TextureRect" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer/HBoxContainer" unique_id=1536311353]
 texture_filter = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("3_cor1f")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Panel/EnemyDisplay/VBoxContainer" unique_id=959984006]
+[node name="Panel" type="Panel" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer" unique_id=959984006]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_u77ya")
 
-[node name="EnemyName" type="Label" parent="CanvasLayer/Panel/EnemyDisplay/VBoxContainer/Panel" unique_id=1584008866]
+[node name="EnemyName" type="Label" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay/VBoxContainer/Panel" unique_id=1584008866]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -345,7 +354,67 @@ text = "Player 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel2" type="Panel" parent="CanvasLayer" unique_id=1121047010]
+[node name="EnemyDisplay2" type="Panel" parent="CanvasLayer/Overlay/HBoxContainer" unique_id=1101953904]
+visible = false
+custom_minimum_size = Vector2(180, 115)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cor1f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2" unique_id=1508692811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer" unique_id=500661058]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer/HBoxContainer" unique_id=522034394]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="EnemyDamage" type="Label" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=234034783]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "20%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyLives" type="Label" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=402897663]
+layout_mode = 2
+text = "     x2"
+
+[node name="EnemyImage" type="TextureRect" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer/HBoxContainer" unique_id=594515897]
+texture_filter = 5
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("3_cor1f")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer" unique_id=975928725]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u77ya")
+
+[node name="EnemyName" type="Label" parent="CanvasLayer/Overlay/HBoxContainer/EnemyDisplay2/VBoxContainer/Panel" unique_id=2080400359]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Player 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="Panel" parent="CanvasLayer" unique_id=1121047010]
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -354,7 +423,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7u6ry")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Panel2" unique_id=932881678]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainMenu" unique_id=932881678]
 layout_mode = 0
 offset_left = -1270.0
 offset_top = -959.0
@@ -363,7 +432,7 @@ offset_bottom = 785.0
 texture = ExtResource("6_p8208")
 stretch_mode = 6
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel2" unique_id=142895184]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainMenu" unique_id=142895184]
 layout_mode = 0
 offset_left = -424.0
 offset_top = -6.0
@@ -372,12 +441,12 @@ offset_bottom = 866.0
 texture = ExtResource("7_axmix")
 stretch_mode = 6
 
-[node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer/Panel2" unique_id=373852135]
+[node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer/MainMenu" unique_id=373852135]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAGAA8AAAABAAEAAAAJAAoAAAABAAEAAAAKAAoAAAACAAIAAAALAAoAAAACAAIAAAAMAAoAAAACAAIAAAANAAoAAAACAAIAAAAOAAoAAAACAAIAAAAPAAoAAAACAAIAAAAQAAoAAAACAAIAAAARAAoAAAACAAIAAAARAAMAAAACAAIAAAAQAAMAAAACAAIAAAAPAAMAAAACAAIAAAAOAAMAAAACAAIAAAANAAMAAAACAAIAAAAMAAMAAAACAAIAAAALAAMAAAACAAIAAAAKAAMAAAACAAIAAAAJAAMAAAABAAEAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAABAAEAAAAJAA4AAAAAAAAAAAAJAA8AAAABAAEAAAAIAA8AAAACAAIAAAAHAA8AAAACAAIAAAAKAA0AAAACAAIAAAALAA0AAAACAAIAAAAMAA0AAAABAAEAAAAGABIAAAABAAEAAAAGAAwAAAABAAEAAAAFAAYAAAABAAEAAAACAAYAAAABAAEAAAACAAoAAAABAAEAAAACAAEAAAABAAEAAAAJAAEAAAABAAEAAAAIAAEAAAACAAIAAAAGAAEAAAABAAEAAAAFAAEAAAACAAIAAAAEAAEAAAACAAIAAAADAAEAAAACAAIAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAYAAAACAAIAAAADAAYAAAACAAIAAAAJAAAAAAABAAAAAAACAAAAAAABAAAAAAAGAAsAAAABAAAAAAAGAA4AAAAAAAAAAAAGABEAAAAAAAAAAAAGABMAAAABAAIAAAAGAA0AAAAAAAAAAAAGABAAAAAAAAAAAAACAAsAAAABAAIAAAAFAAkAAAABAAIAAAAFABIAAAAAAAEAAAAFAA8AAAAAAAEAAAAIAA0AAAAAAAEAAAAIAAoAAAAAAAEAAAABAAYAAAACAAIAAAABAAEAAAAAAAEAAAAKAAEAAAACAAIAAAADAAoAAAACAAEAAAAGAAYAAAACAAEAAAAHAAwAAAACAAEAAAAHABIAAAACAAEAAAAKAA8AAAACAAEAAAAJAAIAAAAAAAAAAAAGAAMAAAABAAEAAAAHAAEAAAACAAIAAAAIAAMAAAACAAIAAAAHAAMAAAACAAIAAAAGAAAAAAAAAAAAAAAGAAQAAAABAAIAAAAFAAMAAAAAAAEAAAAGAAIAAAAAAAAAAAAFAAUAAAABAAAAAAABAAoAAAACAAIAAAAAAAYAAAACAAIAAAAAAAkAAAABAAAAAAAAAAoAAAABAAEAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAABAAEAAAAAABEAAAABAAIAAAABABAAAAACAAIAAAACABAAAAACAAIAAAADABAAAAABAAEAAAAEABAAAAACAAEAAAADAA8AAAABAAAAAAADABEAAAAAAAAAAAADABIAAAAAAAAAAAADABMAAAAAAAAAAAADABQAAAAAAAAAAAAJABAAAAAAAAAAAAAJABEAAAAAAAAAAAAJABIAAAAAAAAAAAAJABMAAAAAAAAAAAAJABQAAAAAAAAAAAALAAEAAAACAAIAAAAMAAEAAAACAAIAAAANAAEAAAACAAIAAAAOAAEAAAABAAEAAAAOAAAAAAAAAAAAAAAOAAIAAAABAAIAAAAPAAEAAAACAAEAAAASAAoAAQABAAEAAAATAAoAAQAAAAAAAAAUAAoAAQAAAAAAAAAVAAoAAQABAAEAAAASAAMAAQABAAEAAAATAAMAAQABAAEAAAAUAAMAAQABAAEAAAAVAAMAAQABAAEAAAAWAAMAAQABAAEAAAAXAAMAAQABAAEAAAAYAAMAAQABAAEAAAAZAAMAAQABAAEAAAAWAAoAAQABAAEAAAAXAAoAAQAAAAAAAAAYAAoAAQAAAAAAAAAZAAoAAQABAAEAAAAaAAoAAQACAAEAAAAaAAkAAQACAAEAAAAaAAgAAQACAAEAAAAaAAcAAQACAAEAAAAaAAYAAQACAAEAAAAaAAUAAQACAAEAAAAaAAQAAQACAAEAAAAaAAMAAQACAAEAAAAXAAsAAQACAAAAAAAYAAsAAQACAAAAAAAUAAsAAQACAAAAAAATAAsAAQACAAAAAAAcAAEAAQAAAAEAAAAdAAEAAQABAAEAAAAeAAEAAQAAAAAAAAAeAAIAAQACAAAAAAAfAAEAAQABAAEAAAAgAAEAAQACAAEAAAAdAAcAAQAAAAEAAAAeAAcAAQABAAEAAAAfAAcAAQAAAAAAAAAfAAgAAQACAAAAAAAgAAcAAQAAAAAAAAAgAAgAAQACAAAAAAAhAAcAAQABAAEAAAAiAAcAAQACAAEAAAAeAA4AAQABAAEAAAAgAA4AAQACAAEAAAAcAA4AAQAAAAEAAAAdAA4AAQAAAAAAAAAdAA8AAQACAAAAAAAfAA4AAQAAAAAAAAAfAA8AAQACAAAAAAAYABEAAQAAAAAAAAAZABEAAQABAAEAAAAaABEAAQACAAEAAAAWABEAAQAAAAEAAAAXABEAAQABAAEAAAAYABIAAQACAAAAAAANAA0AAAACAAEAAAAMAAwAAAABAAAAAAAMAA4AAAAAAAAAAAAMAA8AAAAAAAAAAAAMABAAAAAAAAAAAAAMABEAAAAAAAAAAAAMABIAAAAAAAAAAAAMABMAAAAAAAAAAAAMABQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_sbet0")
 
-[node name="Level1Button" type="Button" parent="CanvasLayer/Panel2" unique_id=1606298617]
+[node name="Level1Button" type="Button" parent="CanvasLayer/MainMenu" unique_id=1606298617]
 layout_mode = 0
 offset_left = 480.0
 offset_top = 392.0
@@ -389,7 +458,7 @@ theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_0wv8u")
 text = "Level 1"
 
-[node name="Level2Button" type="Button" parent="CanvasLayer/Panel2" unique_id=289025947]
+[node name="Level2Button" type="Button" parent="CanvasLayer/MainMenu" unique_id=289025947]
 layout_mode = 0
 offset_left = 480.0
 offset_top = 468.0
@@ -401,7 +470,7 @@ theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_67jta")
 text = "Level 2"
 
-[node name="Level3Button" type="Button" parent="CanvasLayer/Panel2" unique_id=1557481514]
+[node name="Level3Button" type="Button" parent="CanvasLayer/MainMenu" unique_id=1557481514]
 layout_mode = 0
 offset_left = 480.0
 offset_top = 544.0
@@ -413,7 +482,7 @@ theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_p8208")
 text = "Level 3"
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Panel2" unique_id=1712436599]
+[node name="Panel" type="Panel" parent="CanvasLayer/MainMenu" unique_id=1712436599]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -428,7 +497,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_axmix")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel2/Panel" unique_id=192085699]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MainMenu/Panel" unique_id=192085699]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -446,7 +515,7 @@ text = "[b][u][font_size=80]FIGHTING[/font_size]
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel3" type="Panel" parent="CanvasLayer" unique_id=198917330]
+[node name="EndMenu" type="Panel" parent="CanvasLayer" unique_id=198917330]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -454,7 +523,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="YouLose" type="Panel" parent="CanvasLayer/Panel3" unique_id=1058742465]
+[node name="YouLose" type="Panel" parent="CanvasLayer/EndMenu" unique_id=1058742465]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -469,7 +539,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e23it")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel3/YouLose" unique_id=1614589059]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EndMenu/YouLose" unique_id=1614589059]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -479,7 +549,7 @@ grow_vertical = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel3/YouLose/VBoxContainer" unique_id=1389793878]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/EndMenu/YouLose/VBoxContainer" unique_id=1389793878]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
@@ -490,12 +560,12 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel3/YouLose/VBoxContainer" unique_id=247023423]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/EndMenu/YouLose/VBoxContainer" unique_id=247023423]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel3/YouLose/VBoxContainer/HBoxContainer" unique_id=1860343602]
+[node name="Button" type="Button" parent="CanvasLayer/EndMenu/YouLose/VBoxContainer/HBoxContainer" unique_id=1860343602]
 custom_minimum_size = Vector2(224, 78)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0.019607844, 1)
@@ -503,10 +573,55 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_hl6be")
 text = "Main Menu"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Panel3/YouLose/VBoxContainer/HBoxContainer" unique_id=952720224]
-custom_minimum_size = Vector2(190, 0)
+[node name="YouWin" type="Panel" parent="CanvasLayer/EndMenu" unique_id=1248841909]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.0
+offset_top = -208.0
+offset_right = 321.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k81xp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EndMenu/YouWin" unique_id=420097353]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/EndMenu/YouWin/VBoxContainer" unique_id=796384930]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.19607843, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[outline_color=black][outline_size=24][b][color=while][font_size=80]Game Over
+[outline_size=16][font_size=50]You Win!"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/EndMenu/YouWin/VBoxContainer" unique_id=451894639]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/EndMenu/YouWin/VBoxContainer/HBoxContainer" unique_id=1325381127]
+custom_minimum_size = Vector2(224, 78)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0.019607844, 1)
 theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_sbet0")
-text = "Try Again"
+theme_override_styles/normal = SubResource("StyleBoxFlat_hl6be")
+text = "Main Menu"
+
+[connection signal="pressed" from="CanvasLayer/EndMenu/YouLose/VBoxContainer/HBoxContainer/Button" to="." method="_on_end_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndMenu/YouWin/VBoxContainer/HBoxContainer/Button" to="." method="_on_end_button_pressed"]

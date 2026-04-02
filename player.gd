@@ -15,3 +15,9 @@ func _physics_process(delta: float) -> void:
 		try_jump()
 	
 	current_class.attack_if_pressed()
+
+
+func set_class(class_scene: PackedScene):
+	current_class.queue_free()
+	current_class = class_scene.instantiate()
+	add_child(current_class)

@@ -3,9 +3,29 @@
 [ext_resource type="PackedScene" uid="uid://mgmog6p57yn1" path="res://enemy.tscn" id="1_4o87s"]
 [ext_resource type="Script" uid="uid://dvkjy48yfgck5" path="res://avoid.gd" id="2_3vset"]
 [ext_resource type="Script" uid="uid://b4w1hf1d3dl0w" path="res://rock_throw.gd" id="3_764yi"]
+[ext_resource type="PackedScene" uid="uid://tpl8vkqj8m8r" path="res://laser.tscn" id="4_7jr47"]
+[ext_resource type="Texture2D" uid="uid://b6nlawciwarr3" path="res://assets/Robot.png" id="4_vfv30"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jr47"]
+atlas = ExtResource("4_vfv30")
+region = Rect2(0, 0, 68, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0yg2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jr47")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" unique_id=1437868065 instance=ExtResource("1_4o87s")]
 ground_acceleration = 3200.0
+
+[node name="ColorRect" parent="." index="1" unique_id=852334106]
+visible = false
 
 [node name="RayCastLeft" type="RayCast2D" parent="." index="2" unique_id=1511805879]
 target_position = Vector2(-250, 0)
@@ -27,4 +47,9 @@ script = ExtResource("3_764yi")
 next_state = NodePath("../Avoid")
 left_raycast = NodePath("../../RayCastLeft")
 right_raycast = NodePath("../../RayCastRight")
+rock = ExtResource("4_7jr47")
 stun_time = 2.0
+
+[node name="AnimatedSprite2D" parent="." index="5" unique_id=734612265]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_p0yg2")

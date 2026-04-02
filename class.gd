@@ -29,4 +29,6 @@ func attack_if_pressed():
 				#child.hide()
 			#attack.show()
 			attack.attack()
+			cooldown_timer = attack.cooldown
+			get_parent().stun(attack.stun_time)
 			get_parent().attack.emit()

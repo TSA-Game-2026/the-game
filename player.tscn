@@ -20,6 +20,6 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="Caveman" parent="." unique_id=279445006 node_paths=PackedStringArray("attack_mapping") instance=ExtResource("2_onrkg")]
 attack_mapping = {
 "primary_attack": NodePath("NormalPunch"),
-"secondary_attack": null,
+"secondary_attack": NodePath("ThrowRock"),
 "tertiary_attack": null
 }

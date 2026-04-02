@@ -85,8 +85,6 @@ func reset():
 	velocity = Vector2.ZERO
 	damage_taken = 0
 	lives -= 1
-	if lives <= 0:
-		get_parent().level_over()
 
 
 func try_jump() -> bool:

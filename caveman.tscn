@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://e6oq6c8obthm" path="res://class.tscn" id="1_uhig7"]
 [ext_resource type="PackedScene" uid="uid://ci46w32pmf1rf" path="res://normal_punch.tscn" id="2_7lo4x"]
 [ext_resource type="Texture2D" uid="uid://2iot1y6vxrjx" path="res://assets/caveman 2.png" id="2_hirew"]
+[ext_resource type="Script" uid="uid://w0qe2to0ygfh" path="res://throw_rock.gd" id="4_ae1ib"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ae1ib"]
 atlas = ExtResource("2_hirew")
@@ -22,7 +23,7 @@ animations = [{
 [node name="Caveman" unique_id=279445006 node_paths=PackedStringArray("attack_mapping") instance=ExtResource("1_uhig7")]
 attack_mapping = {
 "primary_attack": NodePath("NormalPunch"),
-"secondary_attack": null,
+"secondary_attack": NodePath("ThrowRock"),
 "tertiary_attack": null
 }
 
@@ -40,3 +41,11 @@ sprite_frames = SubResource("SpriteFrames_tduhp")
 
 [node name="NormalPunch" parent="." index="2" unique_id=960570771 instance=ExtResource("2_7lo4x")]
 visible = false
+damage = 10.0
+cooldown = 0.3
+
+[node name="ThrowRock" type="Node2D" parent="." index="3" unique_id=231685175]
+visible = false
+scale = Vector2(0.7402344, 0.96875)
+script = ExtResource("4_ae1ib")
+knockback = Vector2(500, -400)
