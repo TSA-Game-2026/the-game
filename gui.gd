@@ -13,6 +13,7 @@ const lives_text = "     x%d"
 @onready var win_menu = $CanvasLayer/EndMenu/YouWin
 @onready var lose_menu = $CanvasLayer/EndMenu/YouLose
 
+@onready var swirl_tween
 
 func _ready() -> void:
 	$CanvasLayer.show()
@@ -41,3 +42,19 @@ func _on_end_button_pressed():
 	main_menu.show()
 	end_menu.hide()
 	get_parent().reset()
+
+
+func swirl():
+	swirl_tween = create_tween().set_parallel()
+	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), 0.0, 2.0, 2.0)
+	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 1, 2)
+	
+	await swirl_tween.finished
+
+
+func unswirl():
+	swirl_tween = create_tween().set_parallel()
+	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), -2.0, 0, 2.0)
+	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 0, 2)
+	
+	await swirl_tween.finished

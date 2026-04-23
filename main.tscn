@@ -8,6 +8,7 @@ texture_filter = 5
 script = ExtResource("1_ig7tw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1594719984]
+ignore_rotation = false
 
 [node name="GUI" parent="." unique_id=1327299408 instance=ExtResource("5_lquwl")]
 

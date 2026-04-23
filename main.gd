@@ -60,7 +60,9 @@ func _process(delta: float) -> void:
 		swap_timer = randf_range(min_swap_time, max_swap_time)
 
 
-func set_arena(new_arena: Arenas) -> void:
+func set_arena(new_arena: Arenas, swirl: bool=true) -> void:
+	if swirl: await gui.swirl()
+	
 	if current_arena:
 		current_arena.queue_free()
 	var arena_inst
@@ -82,6 +84,8 @@ func set_arena(new_arena: Arenas) -> void:
 	for character: Character in [current_player] + current_enemies:
 		character.position.y = -350
 		character.velocity = Vector2.ZERO
+	
+	if swirl: await gui.unswirl()
 
 
 func start_level(level_num: int):
@@ -104,7 +108,7 @@ func start_level(level_num: int):
 		add_child(current_enemy)
 		current_enemy.position = $EnemySpawn.position
 	
-	set_arena(Arenas.PREHISTORIC)
+	set_arena(Arenas.PREHISTORIC, false)
 	next_arena = Arenas.SPACE
 
 
