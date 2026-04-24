@@ -463,7 +463,6 @@ size_flags_vertical = 3
 color = Color(0, 0, 0, 0)
 
 [node name="MainMenu" type="Panel" parent="CanvasLayer" unique_id=1121047010]
-visible = false
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
