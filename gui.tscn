@@ -62,23 +62,40 @@ corner_radius_bottom_left = 4
 [sub_resource type="Shader" id="Shader_0wv8u"]
 code = "shader_type canvas_item;
 
-uniform float swirl_strength = 1;
-uniform float radius = .5;
+uniform float swirl_strength : hint_range(-10.0, 10.0) = 1.0;
+uniform float radius : hint_range(0.0, 1.0) = 0.5;
+// Use explicit filter for compatibility
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 void fragment() {
+    // 1. Get aspect ratio to ensure the swirl is a circle, not an oval
+    float aspect = SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x;
+    
+    // 2. Center the UVs and adjust X for aspect ratio
     vec2 uv = SCREEN_UV - vec2(0.5);
+    uv.x /= aspect; 
+    
     float dist = length(uv);
 
-    // Calculate rotation based on distance
-    float angle = atan(uv.y, uv.x) + (swirl_strength * (radius - dist) / radius);
-
-    // Only apply if within radius
+    // 3. Logic check: apply swirl only within radius
     if (dist < radius) {
-        uv = vec2(cos(angle), sin(angle)) * dist;
+        // Smoothly fade the swirl strength toward the edges of the radius
+        float percent = (radius - dist) / radius;
+        float angle = swirl_strength * percent * percent; // Quadratic falloff looks smoother
+        
+        float s = sin(angle);
+        float c = cos(angle);
+        
+        // Rotate the coordinates
+        uv = vec2(uv.x * c - uv.y * s, uv.x * s + uv.y * c);
     }
 
-    COLOR = texture(SCREEN_TEXTURE, uv + vec2(0.5));
+    // 4. Re-apply aspect ratio and move center back
+    uv.x *= aspect;
+    vec2 final_uv = uv + vec2(0.5);
+
+    // 5. Sample the texture
+    COLOR = texture(SCREEN_TEXTURE, final_uv);
 }
 "
 
