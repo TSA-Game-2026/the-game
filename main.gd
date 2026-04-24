@@ -29,7 +29,7 @@ enum Arenas {
 @onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 var playing: bool = false
-var swap_timer: float = 3#randf_range(min_swap_time, max_swap_time)
+var swap_timer: float = randf_range(min_swap_time, max_swap_time)
 var next_arena: Arenas = Arenas.SPACE
 
 
