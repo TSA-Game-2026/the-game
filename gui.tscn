@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://5m7k3mnrpjrw" path="res://assets/Sprite-0001.png" id="5_67jta"]
 [ext_resource type="Texture2D" uid="uid://cwunfqstxfx0j" path="res://assets/Sprite-0002.png" id="6_p8208"]
 [ext_resource type="Texture2D" uid="uid://gulhrngwj1cu" path="res://assets/prehBG.png" id="7_axmix"]
-[ext_resource type="Shader" uid="uid://dcwjjhj0kk5kv" path="res://swirl.gdshader" id="8_67jta"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80edf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -60,8 +59,31 @@ bg_color = Color(0.85537285, 0, 0.07105184, 1)
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="Shader" id="Shader_0wv8u"]
+code = "shader_type canvas_item;
+
+uniform float swirl_strength = 1;
+uniform float radius = .5;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+void fragment() {
+    vec2 uv = SCREEN_UV - vec2(0.5);
+    float dist = length(uv);
+
+    // Calculate rotation based on distance
+    float angle = atan(uv.y, uv.x) + (swirl_strength * (radius - dist) / radius);
+
+    // Only apply if within radius
+    if (dist < radius) {
+        uv = vec2(cos(angle), sin(angle)) * dist;
+    }
+
+    COLOR = texture(SCREEN_TEXTURE, uv + vec2(0.5));
+}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_67jta"]
-shader = ExtResource("8_67jta")
+shader = SubResource("Shader_0wv8u")
 shader_parameter/swirl_strength = 0.0
 shader_parameter/radius = 0.75
 
@@ -428,6 +450,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=1195993129]
 anchors_preset = 15
@@ -435,9 +458,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color(0, 0, 0, 0)
 
 [node name="MainMenu" type="Panel" parent="CanvasLayer" unique_id=1121047010]
+visible = false
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
