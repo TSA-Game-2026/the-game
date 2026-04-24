@@ -38,32 +38,6 @@ jobs:
           name: windows-build
           path: build/windows
 
-  export-linux:
-    name: Linux Export
-    runs-on: ubuntu-22.04
-    container:
-      image: barichello/godot-ci:4.6
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          lfs: true
-      - name: Setup
-        run: |
-          mkdir -p ~/.local/share/godot/export_templates/
-          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Linux Build
-        run: |
-          mkdir -p build/linux
-          EXPORT_DIR="$(readlink -f build)"
-          cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Linux/X11" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-build
-          path: build/linux
-
   export-web:
     name: Web Export
     runs-on: ubuntu-22.04
@@ -103,32 +77,6 @@ jobs:
           commit-message: ${{ github.ref_name }}
           clean: true
 
-  export-mac:
-    name: Mac Export
-    runs-on: ubuntu-22.04
-    container:
-      image: barichello/godot-ci:4.6
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          lfs: true
-      - name: Setup
-        run: |
-          mkdir -p ~/.local/share/godot/export_templates/
-          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Mac Build
-        run: |
-          mkdir -p build/mac
-          EXPORT_DIR="$(readlink -f build)"
-          cd $PROJECT_PATH
-          godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME.zip"
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: mac-build
-          path: build/mac
-
   release:
     name: Create Release
     runs-on: ubuntu-latest
@@ -153,8 +101,6 @@ jobs:
           tag_name: ${{ env.VERSION }}
           files: |
             build/Windows.exe
-            build/Linux.x86_64
-            build/MacOS.zip
           body: "Web build: [Github Pages](https://TSA-Game-2026.github.io/game.github.io/)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
