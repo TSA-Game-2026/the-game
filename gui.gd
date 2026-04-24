@@ -4,7 +4,6 @@ extends Control
 
 const lives_text = "     x%d"
 
-
 @onready var level_1_button: Button = $CanvasLayer/MainMenu/Level1Button
 @onready var level_2_button: Button = $CanvasLayer/MainMenu/Level2Button
 @onready var level_3_button: Button = $CanvasLayer/MainMenu/Level3Button
@@ -13,7 +12,6 @@ const lives_text = "     x%d"
 @onready var win_menu = $CanvasLayer/EndMenu/YouWin
 @onready var lose_menu = $CanvasLayer/EndMenu/YouLose
 
-@onready var swirl_tween
 
 func _ready() -> void:
 	$CanvasLayer.show()
@@ -45,16 +43,29 @@ func _on_end_button_pressed():
 
 
 func swirl():
-	swirl_tween = create_tween().set_parallel()
-	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), 0.0, 2.0, 2.0)
-	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 1, 2)
+	var time_tween: Tween = create_tween().set_ignore_time_scale().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	time_tween.tween_property(Engine, "time_scale", 0, 1.5)
+	
+	var swirl_tween = create_tween().set_parallel().set_trans(Tween.TRANS_QUINT).set_ignore_time_scale()
+	
+	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), 0.0, 20.0, 3)
+	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 1, 3)
+	swirl_tween.tween_property(get_parent().audio, "volume_db", -80, 3)
+	
+	swirl_tween.chain().tween_interval(1) # time between swirls
 	
 	await swirl_tween.finished
 
 
 func unswirl():
-	swirl_tween = create_tween().set_parallel()
-	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), -2.0, 0, 2.0)
-	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 0, 2)
+	var swirl_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT).set_ignore_time_scale()
+	
+	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), -20.0, 0, 3)
+	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 0, 3)
+	swirl_tween.tween_property(get_parent().audio, "volume_db", 0, 3)
+	
+	var time_tween: Tween = create_tween().set_ignore_time_scale().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	time_tween.tween_interval(1.5)
+	time_tween.tween_property(Engine, "time_scale", 1, 1.5)
 	
 	await swirl_tween.finished

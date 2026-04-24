@@ -26,9 +26,10 @@ enum Arenas {
 @onready var enemy2: PackedScene = preload("res://alenemy.tscn")
 
 @onready var gui: GUI = $GUI
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 var playing: bool = false
-var swap_timer: float = randf_range(min_swap_time, max_swap_time)
+var swap_timer: float = 3#randf_range(min_swap_time, max_swap_time)
 var next_arena: Arenas = Arenas.SPACE
 
 
@@ -61,7 +62,8 @@ func _process(delta: float) -> void:
 
 
 func set_arena(new_arena: Arenas, swirl: bool=true) -> void:
-	if swirl: await gui.swirl()
+	if swirl:
+		await gui.swirl()
 	
 	if current_arena:
 		current_arena.queue_free()
@@ -81,11 +83,13 @@ func set_arena(new_arena: Arenas, swirl: bool=true) -> void:
 	$AudioStreamPlayer.stream = current_arena.music
 	$AudioStreamPlayer.play()
 	
-	for character: Character in [current_player] + current_enemies:
-		character.position.y = -350
-		character.velocity = Vector2.ZERO
+	#for character: Character in [current_player] + current_enemies:
+		#character.position.y = -350
+		#character.velocity = Vector2.ZERO
 	
-	if swirl: await gui.unswirl()
+	if swirl:
+		current_player.jumps = max(1, current_player.jumps)
+		await gui.unswirl()
 
 
 func start_level(level_num: int):
@@ -114,8 +118,7 @@ func start_level(level_num: int):
 
 func level_over(win: bool) -> void:
 	gui.update(current_player, current_enemies)
-	for character: Character in [current_player] + current_enemies:
-		character.process_mode = Node.PROCESS_MODE_DISABLED
+
 	playing = false
 	gui.end_menu.show()
 	if win:

@@ -28,6 +28,8 @@ var falling = false
 ## How many lives this character has left
 var lives: int = 2
 
+var can_move = true
+
 var jumps: int = 0
 var jump_timer: float = 0
 var stun_timer: float = 0
@@ -36,8 +38,9 @@ var i_timer: float = 0
 var prev_on_floor = false
 
 
-
 func _physics_process(delta: float) -> void:
+	if not can_move:
+		move_direction = 0
 	velocity.x = move_toward(velocity.x, (move_direction * speed) if (stun_timer <= 0) else 0.0, delta * (ground_acceleration if is_on_floor() else air_acceleration))
 	
 	if !is_on_floor():
