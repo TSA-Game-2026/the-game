@@ -1,4 +1,4 @@
-@abstract class_name State
+@abstract class_name EnemyState
 extends Node
 
 

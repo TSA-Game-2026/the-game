@@ -12,6 +12,9 @@ const lives_text = "     x%d"
 @onready var win_menu = $CanvasLayer/EndMenu/YouWin
 @onready var lose_menu = $CanvasLayer/EndMenu/YouLose
 
+var swirl_time = 3.0
+var slowdown_time = 1.5
+
 
 func _ready() -> void:
 	$CanvasLayer.show()
@@ -44,13 +47,12 @@ func _on_end_button_pressed():
 
 func swirl():
 	var time_tween: Tween = create_tween().set_ignore_time_scale().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-	time_tween.tween_property(Engine, "time_scale", 0, 1.5)
+	time_tween.tween_property(Engine, "time_scale", 0, slowdown_time)
 	
 	var swirl_tween = create_tween().set_parallel().set_trans(Tween.TRANS_QUINT).set_ignore_time_scale()
-	
-	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), 0.0, 20.0, 3)
-	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 1, 3)
-	swirl_tween.tween_property(get_parent().audio, "volume_db", -80, 3)
+	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), 0.0, 20.0, swirl_time)
+	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 1, swirl_time)
+	swirl_tween.tween_property(get_parent().audio, "volume_db", -80, swirl_time)
 	
 	swirl_tween.chain().tween_interval(1) # time between swirls
 	
@@ -59,13 +61,12 @@ func swirl():
 
 func unswirl():
 	var swirl_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT).set_ignore_time_scale()
-	
-	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), -20.0, 0, 3)
-	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 0, 3)
-	swirl_tween.tween_property(get_parent().audio, "volume_db", 0, 3)
+	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), -20.0, 0, swirl_time)
+	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 0, swirl_time)
+	swirl_tween.tween_property(get_parent().audio, "volume_db", 0, swirl_time)
 	
 	var time_tween: Tween = create_tween().set_ignore_time_scale().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	time_tween.tween_interval(1.5)
-	time_tween.tween_property(Engine, "time_scale", 1, 1.5)
+	time_tween.tween_interval(swirl_time - slowdown_time)
+	time_tween.tween_property(Engine, "time_scale", 1, slowdown_time)
 	
 	await swirl_tween.finished

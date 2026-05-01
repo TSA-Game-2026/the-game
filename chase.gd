@@ -1,10 +1,10 @@
-extends State
+extends EnemyState
 
 
 const TRACKING_MARGIN = 10
 
 @export var attack_box: Area2D
-@export var hit_state: State
+@export var hit_state: EnemyState
 @export var attack_in_range_min_time: float = 0.1
 @export var attack_in_range_max_time: float = 0.4
 

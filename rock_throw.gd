@@ -1,7 +1,7 @@
-extends State
+extends EnemyState
 
 
-@export var next_state: State
+@export var next_state: EnemyState
 @export var left_raycast: RayCast2D
 @export var right_raycast: RayCast2D
 

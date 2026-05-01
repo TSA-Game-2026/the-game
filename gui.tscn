@@ -62,8 +62,8 @@ corner_radius_bottom_left = 4
 [sub_resource type="Shader" id="Shader_0wv8u"]
 code = "shader_type canvas_item;
 
-uniform float swirl_strength : hint_range(-10.0, 10.0) = 1.0;
-uniform float radius : hint_range(0.0, 1.0) = 0.5;
+uniform float swirl_strength = 1.0;
+//uniform float radius : hint_range(0.0, 1.0) = 0.5;
 // Use explicit filter for compatibility
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
@@ -78,9 +78,9 @@ void fragment() {
     float dist = length(uv);
 
     // 3. Logic check: apply swirl only within radius
-    if (dist < radius) {
+    if (dist < 0.75) {
         // Smoothly fade the swirl strength toward the edges of the radius
-        float percent = (radius - dist) / radius;
+        float percent = (0.75 - dist) / 0.75;
         float angle = swirl_strength * percent * percent; // Quadratic falloff looks smoother
         
         float s = sin(angle);
@@ -102,7 +102,6 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_67jta"]
 shader = SubResource("Shader_0wv8u")
 shader_parameter/swirl_strength = 0.0
-shader_parameter/radius = 0.75
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7u6ry"]
 

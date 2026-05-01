@@ -78,14 +78,18 @@ tile_set = SubResource("TileSet_4rfdh")
 
 [node name="bg" type="Sprite2D" parent="." unique_id=31343864]
 z_index = -1
-position = Vector2(-439, -99.99999)
 scale = Vector2(2.209625, 2.1344998)
 texture = ExtResource("2_db7ft")
+region_enabled = true
+region_rect = Rect2(439, 100, 521.267, 303.655)
+region_filter_clip_enabled = true
 
 [node name="clouds" type="Sprite2D" parent="." unique_id=1670534748]
-position = Vector2(-92, 198.99998)
+position = Vector2(0, 156.99998)
 scale = Vector2(1.944, 2.23)
 texture = ExtResource("3_4rfdh")
+region_enabled = true
+region_rect = Rect2(0, 87.594, 592.593, 150)
 
 [node name="RespawnMarker" type="Marker2D" parent="." unique_id=724834923]
 position = Vector2(-3, -501)

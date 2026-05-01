@@ -1,9 +1,9 @@
-extends State
+extends EnemyState
 
 
 const TRACKING_MARGIN = 10
 
-@export var attack_state: State
+@export var attack_state: EnemyState
 @export var target_dist: float = 192
 @export var jump_dist: float = 64
 

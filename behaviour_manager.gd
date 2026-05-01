@@ -2,7 +2,7 @@ class_name BehaviourManager
 extends Node
 
 
-@export var current_state: State
+@export var current_state: EnemyState
 
 
 func _ready() -> void:
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 
 
 ## Exits the current state and switches to the given state.
-func change_state(state: State) -> void:
+func change_state(state: EnemyState) -> void:
 	current_state._exit()
 	current_state = state
 	state._enter()

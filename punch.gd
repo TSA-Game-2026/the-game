@@ -1,7 +1,7 @@
-extends State
+extends EnemyState
 
 @export var attack_box: Area2D
-@export var next_state: State
+@export var next_state: EnemyState
 
 @export var stun_time: float = 0.5
 @export var knockback_strength: Vector2 = Vector2.ZERO
