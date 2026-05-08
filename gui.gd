@@ -12,6 +12,8 @@ const lives_text = "     x%d"
 @onready var win_menu = $CanvasLayer/EndMenu/YouWin
 @onready var lose_menu = $CanvasLayer/EndMenu/YouLose
 
+var swirl_strength = 20.0
+
 var swirl_time = 3.0
 var slowdown_time = 1.5
 
@@ -49,8 +51,8 @@ func swirl():
 	var time_tween: Tween = create_tween().set_ignore_time_scale().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	time_tween.tween_property(Engine, "time_scale", 0, slowdown_time)
 	
-	var swirl_tween = create_tween().set_parallel().set_trans(Tween.TRANS_QUINT).set_ignore_time_scale()
-	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), 0.0, 20.0, swirl_time)
+	var swirl_tween = create_tween().set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT).set_ignore_time_scale()
+	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), 0.0, swirl_strength, swirl_time)
 	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 1, swirl_time)
 	swirl_tween.tween_property(get_parent().audio, "volume_db", -80, swirl_time)
 	
@@ -61,7 +63,7 @@ func swirl():
 
 func unswirl():
 	var swirl_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT).set_ignore_time_scale()
-	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), -20.0, 0, swirl_time)
+	swirl_tween.tween_method(func(x): $CanvasLayer/ColorRect.material.set_shader_parameter("swirl_strength", x), -swirl_strength, 0.0, swirl_time)
 	swirl_tween.tween_property($CanvasLayer/ColorRect2, "color:a", 0, swirl_time)
 	swirl_tween.tween_property(get_parent().audio, "volume_db", 0, swirl_time)
 	
