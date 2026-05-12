@@ -5,9 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bv3d680mhyqrb" path="res://assets/New Piskel-2.png.png" id="3_cor1f"]
 [ext_resource type="Texture2D" uid="uid://clg4sikxrcc3n" path="res://assets/prehPlatforms.png" id="4_0wv8u"]
 [ext_resource type="Script" uid="uid://cvjijjg1y7uog" path="res://hourglass.gd" id="4_67jta"]
+[ext_resource type="Texture2D" uid="uid://d7r5xbvpj4io" path="res://assets/healthbar.png" id="4_e23it"]
 [ext_resource type="Texture2D" uid="uid://5m7k3mnrpjrw" path="res://assets/Sprite-0001.png" id="5_67jta"]
+[ext_resource type="Texture2D" uid="uid://dcwhqjoqv3ab0" path="res://assets/Astronaut Alien FInished.png" id="5_hl6be"]
 [ext_resource type="Texture2D" uid="uid://bgekshg1mmkot" path="res://assets/hourglass.png" id="5_p8208"]
 [ext_resource type="Texture2D" uid="uid://cwunfqstxfx0j" path="res://assets/Sprite-0002.png" id="6_p8208"]
+[ext_resource type="Texture2D" uid="uid://3fqhh82hcumq" path="res://assets/Short Soldier Man.png" id="6_sbet0"]
 [ext_resource type="Texture2D" uid="uid://gulhrngwj1cu" path="res://assets/prehBG.png" id="7_axmix"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80edf"]
@@ -329,7 +332,7 @@ script = ExtResource("1_80edf")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2077712924]
 
 [node name="Overlay" type="Panel" parent="CanvasLayer" unique_id=55765445]
-custom_minimum_size = Vector2(700, 130)
+custom_minimum_size = Vector2(700, 150)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -343,6 +346,7 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_80edf")
 
 [node name="PlayerDisplay" type="Panel" parent="CanvasLayer/Overlay" unique_id=2079087438]
+visible = false
 custom_minimum_size = Vector2(180, 115)
 layout_mode = 1
 anchors_preset = 4
@@ -415,6 +419,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Overlay" unique_id=1952371923]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -547,6 +552,159 @@ theme_override_font_sizes/font_size = 20
 text = "Player 3"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Player1Display" type="TextureRect" parent="CanvasLayer/Overlay" unique_id=910919263]
+texture_filter = 5
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_e23it")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay/Player1Display" unique_id=640957355]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/Overlay/Player1Display/VBoxContainer" unique_id=1788054592]
+clip_contents = true
+custom_minimum_size = Vector2(0, 95)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay/Player1Display/VBoxContainer/Control" unique_id=1880355840]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 10.0
+offset_right = 100.0
+offset_bottom = 210.0
+grow_horizontal = 2
+texture = ExtResource("5_hl6be")
+
+[node name="Label" type="Label" parent="CanvasLayer/Overlay/Player1Display/VBoxContainer/Control" unique_id=158577892]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "100%"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="CanvasLayer/Overlay/Player1Display/VBoxContainer" unique_id=2047991230]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Overlay/Player1Display/VBoxContainer/Control2" unique_id=286190547]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "x2"
+
+[node name="Player2Display" type="TextureRect" parent="CanvasLayer/Overlay" unique_id=1709203394]
+texture_filter = 5
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_bottom = 75.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_e23it")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Overlay/Player2Display" unique_id=235663911]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/Overlay/Player2Display/VBoxContainer" unique_id=1533726809]
+clip_contents = true
+custom_minimum_size = Vector2(0, 95)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Overlay/Player2Display/VBoxContainer/Control" unique_id=700538607]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 10.0
+offset_right = 100.0
+offset_bottom = 210.0
+grow_horizontal = 2
+texture = ExtResource("6_sbet0")
+flip_h = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Overlay/Player2Display/VBoxContainer/Control" unique_id=397344389]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "100%"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="CanvasLayer/Overlay/Player2Display/VBoxContainer" unique_id=85300068]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Overlay/Player2Display/VBoxContainer/Control2" unique_id=805497035]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "x2"
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=909666005]
 material = SubResource("ShaderMaterial_67jta")
